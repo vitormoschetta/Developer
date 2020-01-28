@@ -1,0 +1,40 @@
+﻿_______________PROJETO PESSOAL: ORGANIZAÇÃO DE DESENVOLVIMENTO SOFTWARE => Fazer estilo Trello
+
+- Menu
+- Submenu
+- Nome do Formulário
+- Link
+- Descrição
+
+- Back-End Funcionando?
+	-> Sim
+	-> Não
+	-> Em parte
+- Obs Back-End
+
+- Front-End Funcionando?
+	-> Sim
+	-> Não
+	-> Em parte
+- Obs Front-End
+
+- Layout 
+    -> Sim
+    -> Não
+    -> Em parte
+- Obs Layout
+
+- Tabelas Origem
+    - tabela principal
+    - tabelas sencundárias
+	    -subcampos para cada tabelas
+- Tabelas Destino
+ - tabela principal
+    - tabelas sencundárias
+	    -subcampos para cada tabelas
+- Obs Tabela	
+
+
+
+
+
