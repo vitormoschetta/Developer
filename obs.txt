@@ -1,0 +1,3 @@
+sessão para saber quais os filtros cumulados
+
+quando clicar no botão limpar filtro => encerrar todas as sessões

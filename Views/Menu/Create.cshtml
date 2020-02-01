@@ -1,0 +1,123 @@
+@model Developer.Models.Menu
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Item</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Nome" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Formulario" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Formulario" class="form-control" />
+                <span asp-validation-for="Formulario" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Funcao" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Funcao" class="form-control" />
+                <span asp-validation-for="Funcao" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Link" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Link" class="form-control" />
+                <span asp-validation-for="Link" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Back" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="Back" class="form-control">
+                    <option value="Nao">Não</option>
+                    <option value="Sim">Sim</option>
+                    <option value="Em Parte">Em Parte</option>
+                    <option value="Melhorar">Melhorar</option>
+                </select>
+                <span asp-validation-for="Back" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Front" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="Front" class="form-control">
+                    <option value="Nao">Não</option>
+                    <option value="Sim">Sim</option>
+                    <option value="Em Parte">Em Parte</option>
+                    <option value="Melhorar">Melhorar</option>
+                </select>
+                <span asp-validation-for="Front" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Layout" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="Layout" class="form-control">
+                    <option value="Nao">Não</option>
+                    <option value="Sim">Sim</option>
+                    <option value="Em Parte">Em Parte</option>
+                    <option value="Melhorar">Melhorar</option>
+                </select>
+                <span asp-validation-for="Layout" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ObsApp" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ObsApp" class="form-control" />
+                <span asp-validation-for="ObsApp" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="OriginTable" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="OriginTable" class="form-control" />
+                <span asp-validation-for="OriginTable" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DestinTable" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DestinTable" class="form-control" />
+                <span asp-validation-for="DestinTable" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ObsTable" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ObsTable" class="form-control" />
+                <span asp-validation-for="ObsTable" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="MenuPai_Id" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="MenuPai_Id" class="form-control">
+                    <option value="0">Sem Pai</option>
+                    @foreach (var item in ViewBag.Lista)
+                    {
+                        <option value="@item.Id">@item.Nome</option>
+                    }
+                </select>
+                <span asp-validation-for="MenuPai_Id" class="text-danger"></span>
+            </div>
+        </div>     
+
+
+         <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,154 @@
+@model IEnumerable<Developer.Models.Menu>
+
+<p>
+    <a asp-action="Create">+ Novo</a>
+</p>
+
+<form id="frm" asp-controller="Menu" asp-action="Index" method="post">
+<table class="table">
+    <thead>
+        <!-- ====================== LINHA CABEÇALHO TA TABELA ======================-->
+        <tr>
+            <th>
+                Menu Pai
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Formulario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Funcao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Link)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Back)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Front)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Layout)
+            </th>
+            <th>
+                Obs App
+            </th>
+            <th>
+                Tabela Origem
+            </th>
+            <th>
+                Tabela Destino
+            </th>
+            <th>
+                Obs Tabelas
+            </th>
+            <th></th>
+        </tr>
+
+        <!-- =============================== LINHA FILTROS  ==============================================-->
+         <tr>
+            <th>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <select id="filtroMenuPai" name="filtroMenuPai" class="form-control" onchange="Atualiza()">
+                            <option value="0"></option>
+                            @foreach (var item in ViewBag.Lista)
+                            {
+                                <option value="@item.Id">@item.Nome</option>
+                            }
+                        </select>
+                        
+                    </div>
+                </div>  
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <select id="filtroBack" name="filtroBack" class="form-control" onchange="Atualiza()">
+                            <option value="0"></option>
+                            <option value="Nao">Não</option>
+                            <option value="Sim">Sim</option>
+                            <option value="Em Parte">Em Parte</option>
+                            <option value="Melhorar">Melhorar</option>
+                        </select>
+                        
+                    </div>
+                </div>  
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>
+                <a asp-action="Index">Limpar Filtro</a> |
+            </th>   
+            
+         </tr>
+    </thead>
+
+    <tbody>
+@foreach (var item in Model) {
+    var MenuPai = "";
+    @foreach (var pai in ViewBag.Lista) {
+        if (pai.Id == item.MenuPai_Id){
+            MenuPai = pai.Nome;
+        }
+    }
+        // ==================================== LINHA CORPO DA TABELA ===========================================-->
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => MenuPai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Formulario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Funcao)
+            </td>
+            <td>
+                <a href="@Html.DisplayFor(modelItem => item.Link)">
+                    @Html.DisplayFor(modelItem => item.Link)
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Back)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Front)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Layout)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ObsApp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OriginTable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DestinTable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ObsTable)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Apagar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</form>

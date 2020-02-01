@@ -5,20 +5,19 @@ namespace Developer.Models
 {
     public class Menu
     {
-        public string nome {get; set;}
-        public string descricao {get; set;}
-        public string formulario {get; set;}
-        public string link {get; set;}
-        public string obs {get; set;}
-        public string back {get; set;}		
-        public string obsBack {get; set;}
-		public string front {get; set;}
-        public string obsFront {get; set;}
-		public string layout {get; set;}
-        public string obsLayout {get; set;}
-
-        public int? MenuId { get; set; }        
-        public ICollection<Menu> SubMenu { get; set; }
+        public int Id {get; set;}
+        public string Nome {get; set;}
+        public string Formulario {get; set;}
+        public string Funcao {get; set;}
+        public string Link {get; set;}
+        public string Back {get; set;}		
+		public string Front {get; set;}
+		public string Layout {get; set;}
+        public string ObsApp {get; set;}  
+        public string OriginTable { get; set; }
+        public string  DestinTable { get; set; }
+        public string ObsTable  {get; set;}
+        public int MenuPai_Id { get; set; }
 				
     }
 }

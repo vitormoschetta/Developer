@@ -10,13 +10,14 @@ using Microsoft.Extensions.Logging;
 
 namespace Developer.Controllers
 {
-    public class DestinationTableController: Controller
+    public class TableController: Controller
     {
         private readonly Contexto _context;
 
-        public DestinationTableController(Contexto context)
+        public TableController(Contexto context)
         {
             _context = context;
+            
         }
     }
 }
