@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http; 
 
 namespace Developer.Controllers
 {
@@ -20,8 +21,11 @@ namespace Developer.Controllers
         }
 
 
-         public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index()
         {
+            // Limpa session dos filtros 
+            HttpContext.Session.Clear();
+
             var lista = _context.Menu
             .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id != 0")
             .ToList();
@@ -41,36 +45,94 @@ namespace Developer.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(int filtroMenuPai, string filtroBack)
         {
+            
+            // Instancia a lista com retorno padrão
             var lista = _context.Menu
                 .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id != 0")
                 .ToList();
 
-            if (filtroMenuPai != 0 && filtroBack != "0"){
-                lista = _context.Menu
-                .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id = " + filtroMenuPai + "and Back = '" + filtroBack + "'")
-                .ToList();
-            }
-            if (filtroMenuPai != 0)
-            {
-                lista = _context.Menu
-                .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id = " + filtroMenuPai)
-                .ToList();
-            }
-            if (filtroBack != "0")
-            {
-                lista = _context.Menu
-                .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id != 0 and Back = '" + filtroBack + "'")
-                .ToList();
-            }
-
-            var listaMenuPai = _context.Menu
+            // Lista de menus Pai add a ViewBag.Lista para recuperar na View
+            ViewBag.Lista = _context.Menu
                 .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id = 0")
                 .ToList();
 
-            ViewBag.Lista = listaMenuPai;
 
-            return View(lista);        
+            //Seta a session MenuPai se ainda não existir
+            if (HttpContext.Session.GetInt32("SessionMenuPai") == null){
+                if (filtroMenuPai != null){
+                    HttpContext.Session.SetInt32("SessionMenuPai", filtroMenuPai);
+                }
+            }
+
+            //Seta a session Back se ainda não existir
+            if (HttpContext.Session.GetString("SessionBack") == null){
+                if (filtroBack != null){
+                    HttpContext.Session.SetString("SessionBack", filtroBack);                
+                }
+            }
+
+            //Retorna a lista pela session MenuPai se houver
+            if (HttpContext.Session.GetInt32("SessionMenuPai") != null){
+                lista = _context.Menu
+                    .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id = " + HttpContext.Session.GetInt32("SessionMenuPai"))
+                    .ToList();
+            }
+
+            /*
+
+            //Retorna a lista pela session Back se houver
+            if (HttpContext.Session.GetString("SessionBack") != null && HttpContext.Session.GetInt32("SessionMenuPai") == null){
+                lista = _context.Menu
+                .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id != 0 and back = '" + HttpContext.Session.GetString("SessionBack") + "'")
+                .ToList();
+            }
+
+            //Retorna a lista pelas sessions já criadas
+            if (HttpContext.Session.GetInt32("SessionMenuPai") != null && HttpContext.Session.GetString("SessionBack") != null){
+                lista = _context.Menu
+                .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id = " + HttpContext.Session.GetInt32("SessionMenuPai") + " and Back = '" + HttpContext.Session.GetString("SessionBack") + "'")
+                .ToList();
+            }
+
+
+            /*Verifica se a session MenuPai ainda não existe e cria
+            if (menuPai == null){
+                if (filtroMenuPai != null){
+                    HttpContext.Session.SetInt32("SessionMenuPai", filtroMenuPai);
+                    menuPai = HttpContext.Session.GetInt32("SessionMenuPai");
+                }
+            }
+
+            Verifica se a session Back ainda não existe e cria
+            if (back == null){
+                if (filtroBack != null){
+                    HttpContext.Session.SetString("SessionBack", filtroBack);
+                    back = HttpContext.Session.GetString("SessionBack");
+                }
+            }
+
+            //Retorna a lista pelas sessions já criadas
+            if (menuPai != null && back != null){
+                lista = _context.Menu
+                .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id = " + menuPai + " and Back = '" + back + "'")
+                .ToList();
+            }
+
+            //Retorna a lista pela session MenuPai se houver
+            if (menuPai != null && back == null){
+                lista = _context.Menu
+                .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id = " + menuPai)
+                .ToList();
+            }
             
+             //Retorna a lista pela session Back se houver
+            if (back != null && menuPai == null){
+                lista = _context.Menu
+                .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id != 0 and back = '" + back + "'")
+                .ToList();
+            }*/
+            
+            return View(lista);        
         }
 
 

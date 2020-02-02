@@ -1,3 +1,9 @@
 sessão para saber quais os filtros cumulados
 
 quando clicar no botão limpar filtro => encerrar todas as sessões
+
+
+
+01/02/2020 23:30h
+Limpar a session ao clicar no select (onchange);
+Limpar a session clicada e manter as outras;
