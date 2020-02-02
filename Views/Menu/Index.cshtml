@@ -1,4 +1,4 @@
-@model IEnumerable<Developer.Models.Menu>
+@model IEnumerable<Developer.Models.Menu> 
 @using Microsoft.AspNetCore.Http
 
 <p>
@@ -6,7 +6,7 @@
 </p>
 
 <form id="frm" asp-controller="Menu" asp-action="Index" method="post">
-<table class="table">
+<table class="table">   
     <thead>
         <!-- ====================== LINHA CABEÇALHO TA TABELA ======================-->
         <tr>
@@ -54,25 +54,23 @@
             <th>
                 <div class="form-group">
                     <div class="col-md-10">
-                        <select id="filtroMenuPai" name="filtroMenuPai" class="form-control" onchange="Atualiza()">
+                        <select name="filtroMenuPai" id="filtroMenuPai" class="form-control" onchange="Atualiza()">
                             <option value="0"></option>
-                            @foreach (var item in ViewBag.Lista)
-                            {
+                            @foreach (var item in ViewBag.ListaMenuPai){
                                 <option value="@item.Id">@item.Nome</option>
                             }
                         </select>
-                        
                     </div>
                 </div>  
             </th>
-            <th></th>
+            <th></th>                           
             <th></th>
             <th></th>
             <th></th>
             <th>
                 <div class="form-group">
                     <div class="col-md-10">
-                        <select id="filtroBack" name="filtroBack" class="form-control" onchange="Atualiza()">
+                        <select name="filtroBack2" id="filtroBack2" class="form-control" onchange="Atualiza()">
                             <option value="0"></option>
                             <option value="Nao">Não</option>
                             <option value="Sim">Sim</option>
@@ -99,7 +97,7 @@
     <tbody>
 @foreach (var item in Model) {
     var MenuPai = "";
-    @foreach (var pai in ViewBag.Lista) {
+    @foreach (var pai in ViewBag.ListaMenuPai) {
         if (pai.Id == item.MenuPai_Id){
             MenuPai = pai.Nome;
         }

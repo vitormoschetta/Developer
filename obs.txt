@@ -7,3 +7,8 @@ quando clicar no botão limpar filtro => encerrar todas as sessões
 01/02/2020 23:30h
 Limpar a session ao clicar no select (onchange);
 Limpar a session clicada e manter as outras;
+
+
+
+02/03/2020 
+O proximo projeto NÃO fazer a tela com View Tipada;

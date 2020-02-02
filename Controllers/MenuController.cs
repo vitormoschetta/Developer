@@ -23,124 +23,55 @@ namespace Developer.Controllers
 
         public async Task<IActionResult> Index()
         {
-            // Limpa session dos filtros 
-            HttpContext.Session.Clear();
+            // Instancia a lista com retorno padrão
+            var listaMenu = await _context.Menu.Where(m => m.MenuPai_Id != 0).ToListAsync();
 
-            var lista = _context.Menu
-            .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id != 0")
-            .ToList();
+            // Lista de menus Pai add a ViewBag.Lista para recuperar na View
+            ViewBag.ListaMenuPai = await _context.Menu.Where(m => m.MenuPai_Id == 0).ToListAsync();
 
-            var listaMenuPai = _context.Menu
-            .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id = 0")
-            .ToList();
-
-            ViewBag.Lista = listaMenuPai;
-                    
-            return View(lista);
+            return View(listaMenu); //View é tipada
 
         }
 
 
-        //PÓST
+        //POST
         [HttpPost]
         public async Task<IActionResult> Index(int filtroMenuPai, string filtroBack)
         {
-            
             // Instancia a lista com retorno padrão
-            var lista = _context.Menu
-                .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id != 0")
-                .ToList();
+            var listaMenu = await _context.Menu.Where(m => m.MenuPai_Id != 0).ToListAsync();//Diferente de zero porque zero são menus Pai
 
             // Lista de menus Pai add a ViewBag.Lista para recuperar na View
-            ViewBag.Lista = _context.Menu
-                .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id = 0")
-                .ToList();
-
-
-            //Seta a session MenuPai se ainda não existir
-            if (HttpContext.Session.GetInt32("SessionMenuPai") == null){
-                if (filtroMenuPai != null){
-                    HttpContext.Session.SetInt32("SessionMenuPai", filtroMenuPai);
-                }
+            ViewBag.ListaMenuPai = await _context.Menu.Where(m => m.MenuPai_Id == 0).ToListAsync();
+      
+            // Renova a session MenuPai ao mudar o select
+            if (filtroMenuPai != null){
+                HttpContext.Session.SetInt32("SessionMenuPai", filtroMenuPai);
             }
 
-            //Seta a session Back se ainda não existir
-            if (HttpContext.Session.GetString("SessionBack") == null){
-                if (filtroBack != null){
-                    HttpContext.Session.SetString("SessionBack", filtroBack);                
-                }
+            // Renova a session Back ao mudar o select
+            if (filtroBack != null){
+                HttpContext.Session.SetString("SessionBack", filtroBack);   
             }
 
             //Retorna a lista pela session MenuPai se houver
             if (HttpContext.Session.GetInt32("SessionMenuPai") != null){
-                lista = _context.Menu
-                    .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id = " + HttpContext.Session.GetInt32("SessionMenuPai"))
-                    .ToList();
+                listaMenu = await _context.Menu.Where(m => m.MenuPai_Id == HttpContext.Session.GetInt32("SessionMenuPai")).ToListAsync();
             }
-
-            /*
 
             //Retorna a lista pela session Back se houver
-            if (HttpContext.Session.GetString("SessionBack") != null && HttpContext.Session.GetInt32("SessionMenuPai") == null){
-                lista = _context.Menu
-                .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id != 0 and back = '" + HttpContext.Session.GetString("SessionBack") + "'")
-                .ToList();
+            if (HttpContext.Session.GetString("SessionBack") != null){
+                listaMenu = await _context.Menu.Where(m => m.MenuPai_Id == HttpContext.Session.GetInt32("SessionMenuPai")).ToListAsync();
             }
 
-            //Retorna a lista pelas sessions já criadas
-            if (HttpContext.Session.GetInt32("SessionMenuPai") != null && HttpContext.Session.GetString("SessionBack") != null){
-                lista = _context.Menu
-                .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id = " + HttpContext.Session.GetInt32("SessionMenuPai") + " and Back = '" + HttpContext.Session.GetString("SessionBack") + "'")
-                .ToList();
-            }
-
-
-            /*Verifica se a session MenuPai ainda não existe e cria
-            if (menuPai == null){
-                if (filtroMenuPai != null){
-                    HttpContext.Session.SetInt32("SessionMenuPai", filtroMenuPai);
-                    menuPai = HttpContext.Session.GetInt32("SessionMenuPai");
-                }
-            }
-
-            Verifica se a session Back ainda não existe e cria
-            if (back == null){
-                if (filtroBack != null){
-                    HttpContext.Session.SetString("SessionBack", filtroBack);
-                    back = HttpContext.Session.GetString("SessionBack");
-                }
-            }
-
-            //Retorna a lista pelas sessions já criadas
-            if (menuPai != null && back != null){
-                lista = _context.Menu
-                .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id = " + menuPai + " and Back = '" + back + "'")
-                .ToList();
-            }
-
-            //Retorna a lista pela session MenuPai se houver
-            if (menuPai != null && back == null){
-                lista = _context.Menu
-                .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id = " + menuPai)
-                .ToList();
-            }
-            
-             //Retorna a lista pela session Back se houver
-            if (back != null && menuPai == null){
-                lista = _context.Menu
-                .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id != 0 and back = '" + back + "'")
-                .ToList();
-            }*/
-            
-            return View(lista);        
+            return View(listaMenu);        
         }
 
 
         // GET: 
         public async Task<IActionResult> Create()
         {
-            var lista = await _context.Menu.ToListAsync();
-            ViewBag.Lista = lista;
+            ViewBag.ListaMenuPai = await _context.Menu.Where(m => m.MenuPai_Id == 0).ToListAsync();
             return View();
         }
 
@@ -248,30 +179,21 @@ namespace Developer.Controllers
 
 
 
-        /*public async Task<IActionResult> Index(int? id)
-        {
-            if (id != null)
-            {
-                var lista = _context.Menu
-                .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id = " + id)
-                .ToList();
 
-                return View(lista);
-            }
-            else{
-                var lista = _context.Menu
-                .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id != 0")
-                .ToList();
 
-                var listaMenuPai = _context.Menu
-                .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id = 0")
-                .ToList();
 
-                ViewBag.Lista = listaMenuPai;
-                       
-                return View(lista);
-            }
+        /*Se quiser manter a Session mesmo mudando de página
+        if (HttpContext.Session.GetInt32("SessionMenuPai") != null){
+            lista = await _context.Menu.Where(m => m.MenuPai_Id == HttpContext.Session.GetInt32("SessionMenuPai")).ToListAsync();
         }*/
+
+        /*Se for necessário usar comandos SQL Bruto:        
+        lista = await _context.Menu
+            .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id = " + HttpContext.Session.GetInt32("SessionMenuPai"))
+            .ToListAsync();
+        }*/
+                    
+      
 
     }
 }

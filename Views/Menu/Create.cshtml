@@ -104,7 +104,7 @@
             <div class="col-md-10">
                 <select asp-for="MenuPai_Id" class="form-control">
                     <option value="0">Sem Pai</option>
-                    @foreach (var item in ViewBag.Lista)
+                    @foreach (var item in ViewBag.ListaMenuPai)
                     {
                         <option value="@item.Id">@item.Nome</option>
                     }
