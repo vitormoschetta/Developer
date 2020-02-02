@@ -1642,11 +1642,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sempron\\Desktop\\Developer\\Developer.csproj",
+      "projectUniqueName": "C:\\GitHub\\Developer\\Developer.csproj",
       "projectName": "Developer",
-      "projectPath": "C:\\Users\\Sempron\\Desktop\\Developer\\Developer.csproj",
+      "projectPath": "C:\\GitHub\\Developer\\Developer.csproj",
       "packagesPath": "C:\\Users\\Sempron\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sempron\\Desktop\\Developer\\obj\\",
+      "outputPath": "C:\\GitHub\\Developer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Sempron\\AppData\\Roaming\\NuGet\\NuGet.Config"
