@@ -24,17 +24,51 @@ namespace Developer.Controllers
         public async Task<IActionResult> Index()
         {
             HttpContext.Session.Clear();
-
-            ViewBag.sessoPai = 
             // ListaMenu com retorno padrão
             ViewBag.listaMenu = await _context.Menu.Where(m => m.MenuPai_Id != 0).ToListAsync();
 
             // Lista de menus Pai add a ViewBag.Lista para recuperar na View
             ViewBag.ListaMenuPai = await _context.Menu.Where(m => m.MenuPai_Id == 0).ToListAsync();
 
-            return View(); //View é tipada
+            return View(); 
         }
 
+        [HttpPost]
+        public async Task<IActionResult> ListaTodos(int filtroMenuPai, string filtroBack)
+        {
+            // ListaMenu com retorno padrão
+            ViewBag.listaMenu = await _context.Menu.Where(m => m.MenuPai_Id != 0).ToListAsync();
+
+            // Lista de menus Pai add a ViewBag.Lista para recuperar na View
+            ViewBag.ListaMenuPai = await _context.Menu.Where(m => m.MenuPai_Id == 0).ToListAsync();
+
+            ViewBag.MenuPai = "Vazio";
+            ViewBag.Back = "Vazio";
+            ViewBag.Dois = "Vazio";
+      
+            // Renova a session MenuPai ao mudar o select
+            if (filtroMenuPai != 0 && filtroBack == "0"){
+                ViewBag.listaMenu = await _context.Menu.Where(m => m.MenuPai_Id == filtroMenuPai).ToListAsync();
+                //ViewBag.MenuPai = "Adiciona session MenuPai / " + filtroMenuPai;
+            }
+
+            //Renova a session Back ao mudar o select
+            if (filtroBack != "0" && filtroMenuPai == 0){
+                ViewBag.listaMenu = await _context.Menu
+                    .FromSqlRaw("SELECT * FROM Menu where Back = '" + filtroBack + "' and MenuPai_Id != 0")
+                    .ToListAsync();
+                //ViewBag.Back = "Adiciona session Back / " + filtroBack;
+            }
+
+            if (filtroMenuPai != 0 && filtroBack != "0"){
+                ViewBag.listaMenu = await _context.Menu
+                    .FromSqlRaw("SELECT * FROM Menu where Back = '" + filtroBack + "' and MenuPai_Id = " + filtroMenuPai)
+                    .ToListAsync();
+                //ViewBag.Dois = "Entrou nos dois";
+            }
+
+            return PartialView("_partialTabela");
+        }
 
         //POST
         [HttpPost]
@@ -70,7 +104,7 @@ namespace Developer.Controllers
             if (HttpContext.Session.GetInt32("SessionMenuPai") != 0 && HttpContext.Session.GetString("SessionBack") == "0"){
                 ViewBag.listaMenu = await _context.Menu.Where(m => m.MenuPai_Id == HttpContext.Session.GetInt32("SessionMenuPai")).ToListAsync();
                 
-                //ViewBag.MenuPai = "Entrou no SessionMenuPai / " + HttpContext.Session.GetInt32("SessionMenuPai");
+                ViewBag.MenuPai = "Entrou no SessionMenuPai / " + HttpContext.Session.GetInt32("SessionMenuPai");
             }
 
             //Retorna a lista pela session Back se houver
@@ -78,7 +112,7 @@ namespace Developer.Controllers
                 ViewBag.listaMenu = await _context.Menu
                     .FromSqlRaw("SELECT * FROM Menu where Back = '" + HttpContext.Session.GetString("SessionBack") + "' and MenuPai_Id != 0")
                     .ToListAsync();
-                //ViewBag.Back = "Entrou no SessionBack / " + HttpContext.Session.GetString("SessionBack");
+                ViewBag.Back = "Entrou no SessionBack / " + HttpContext.Session.GetString("SessionBack");
             }
 
             if (HttpContext.Session.GetInt32("SessionMenuPai") != 0 && HttpContext.Session.GetString("SessionBack") != "0")
@@ -87,7 +121,7 @@ namespace Developer.Controllers
                     .FromSqlRaw("SELECT * FROM Menu where Back = '" + HttpContext.Session.GetString("SessionBack") + "' and MenuPai_Id = " + HttpContext.Session.GetInt32("SessionMenuPai"))
                     .ToListAsync();
                 
-                //ViewBag.Dois = "Entrou no Session dos dois / " + HttpContext.Session.GetInt32("SessionMenuPai") + " / " +  HttpContext.Session.GetString("SessionBack");
+                ViewBag.Dois = "Entrou no Session dos dois / " + HttpContext.Session.GetInt32("SessionMenuPai") + " / " +  HttpContext.Session.GetString("SessionBack");
             }
            
             

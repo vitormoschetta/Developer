@@ -1,0 +1,100 @@
+<table class="table">   
+    <thead>
+        <!-- ====================== LINHA CABEÇALHO TA TABELA ======================-->
+        <tr>
+            <th>
+                Menu Pai
+            </th>
+            <th>
+                Nome
+            </th>
+            <th>
+                Formulario
+            </th>
+            <th>
+                Função
+            </th>
+            <th>
+                Link
+            </th>
+            <th>
+                Back-End
+            </th>
+            <th>
+                Front-End
+            </th>
+            <th>
+                Layout
+            </th>
+            <th>
+                Obs App
+            </th>
+            <th>
+                Tabela Origem
+            </th>
+            <th>
+                Tabela Destino
+            </th>
+            <th>
+                Obs Tabelas
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+@foreach (var item in ViewBag.ListaMenu) {
+    var MenuPai = "";
+    @foreach (var pai in ViewBag.ListaMenuPai) {
+        if (pai.Id == item.MenuPai_Id){
+            MenuPai = pai.Nome;
+        }
+    }
+        // ==================================== LINHA CORPO DA TABELA ===========================================-->
+        <tr>
+            <td>
+                @MenuPai
+            </td>
+            <td>
+                @item.Nome
+            </td>
+            <td>
+                @item.Formulario
+            </td>
+            <td>
+                @item.Funcao
+            </td>
+            <td>
+                <a href="@item.Link">
+                    @item.Link
+                </a>
+            </td>
+            <td>
+                @item.Back
+            </td>
+            <td>
+                @item.Front
+            </td>
+            <td>
+                @item.Layout
+            </td>
+            <td>
+                @item.ObsApp
+            </td>
+            <td>
+                @item.OriginTable
+            </td>
+            <td>
+                @item.DestinTable
+            </td>
+            <td>
+                @item.ObsTable
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Apagar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

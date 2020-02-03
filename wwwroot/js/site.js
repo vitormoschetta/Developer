@@ -3,7 +3,18 @@
 
 // Write your JavaScript code.
 
+//http://www.macoratti.net/15/05/mvc_ajax.htm
 function Atualiza() {
-    frm.submit();
+    
+    var MenuPai = $("#filtroMenuPai").val();
+    var Back = $("#filtroBack").val();
+
+    var url = "/Menu/ListaTodos";
+    $.post(url, {filtroMenuPai: MenuPai, filtroBack: Back}, function (data)
+    {
+        $("#frm").empty();
+        $("#frm").html(data);
+    });        
+
 }
 

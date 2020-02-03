@@ -7,149 +7,31 @@
     <h5>@ViewBag.Dois</h5>
 </p>
 
-<form id="frm" asp-controller="Menu" asp-action="Index" method="post">
-<table class="table">   
-    <thead>
-        <!-- ====================== LINHA CABEÇALHO TA TABELA ======================-->
-        <tr>
-            <th>
-                Menu Pai
-            </th>
-            <th>
-                Nome
-            </th>
-            <th>
-                Formulario
-            </th>
-            <th>
-                Função
-            </th>
-            <th>
-                Link
-            </th>
-            <th>
-                Back-End
-            </th>
-            <th>
-                Front-End
-            </th>
-            <th>
-                Layout
-            </th>
-            <th>
-                Obs App
-            </th>
-            <th>
-                Tabela Origem
-            </th>
-            <th>
-                Tabela Destino
-            </th>
-            <th>
-                Obs Tabelas
-            </th>
-            <th></th>
-        </tr>
+<div class="form-group">
+    <div class="col-md-10">
+        <select name="filtroMenuPai" id="filtroMenuPai" class="form-control" onchange="Atualiza()">
+            <option value="0"></option>
+            @foreach (var item in ViewBag.ListaMenuPai){
+                <option value="@item.Id">@item.Nome</option>
+            }
+        </select>
+    </div>
+</div>
 
-        <!-- =============================== LINHA FILTROS  ==============================================-->
-         <tr>
-            <th>
-                <div class="form-group">
-                    <div class="col-md-10">
-                        <select name="filtroMenuPai" id="filtroMenuPai" class="form-control" onchange="Atualiza()">
-                            <option value="0"></option>
-                            @foreach (var item in ViewBag.ListaMenuPai){
-                                <option value="@item.Id">@item.Nome</option>
-                            }
-                        </select>
-                    </div>
-                </div>  
-            </th>
-            <th></th>                                       
-            <th></th>
-            <th></th>
-            <th></th>
-            <th>
-                <div class="form-group">
-                    <div class="col-md-10">
-                        <select name="filtroBack" id="filtroBack" class="form-control" onchange="Atualiza()">
-                            <option value="0"></option>
-                            <option value="Nao">Não</option>
-                            <option value="Sim">Sim</option>
-                            <option value="Em Parte">Em Parte</option>
-                            <option value="Melhorar">Melhorar</option>
-                        </select>
-                        
-                    </div>
-                </div>  
-            </th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th>
-                <a asp-action="Index">Limpar Filtro</a> |
-            </th>   
-            
-         </tr>
-    </thead>
+<div class="form-group">
+    <div class="col-md-10">
+        <select name="filtroBack" id="filtroBack" class="form-control" onchange="Atualiza()">
+            <option value="0"></option>
+            <option value="Nao">Não</option>
+            <option value="Sim">Sim</option>
+            <option value="Em Parte">Em Parte</option>
+            <option value="Melhorar">Melhorar</option>
+        </select>
+        
+    </div>
+</div>  
 
-    <tbody>
-@foreach (var item in ViewBag.ListaMenu) {
-    var MenuPai = "";
-    @foreach (var pai in ViewBag.ListaMenuPai) {
-        if (pai.Id == item.MenuPai_Id){
-            MenuPai = pai.Nome;
-        }
-    }
-        // ==================================== LINHA CORPO DA TABELA ===========================================-->
-        <tr>
-            <td>
-                @MenuPai
-            </td>
-            <td>
-                @item.Nome
-            </td>
-            <td>
-                @item.Formulario
-            </td>
-            <td>
-                @item.Funcao
-            </td>
-            <td>
-                <a href="@item.Link">
-                    @item.Link
-                </a>
-            </td>
-            <td>
-                @item.Back
-            </td>
-            <td>
-                @item.Front
-            </td>
-            <td>
-                @item.Layout
-            </td>
-            <td>
-                @item.ObsApp
-            </td>
-            <td>
-                @item.OriginTable
-            </td>
-            <td>
-                @item.DestinTable
-            </td>
-            <td>
-                @item.ObsTable
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Apagar</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-</form>
+
+<div id="frm" asp-controller="Menu" asp-action="Index" method="post">
+    @Html.Partial("_partialTabela")
+</div>
