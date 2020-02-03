@@ -1,8 +1,10 @@
-@model IEnumerable<Developer.Models.Menu> 
 @using Microsoft.AspNetCore.Http
 
 <p>
     <a asp-action="Create">+ Novo</a>
+    <h5>@ViewBag.MenuPai</h5>
+    <h5>@ViewBag.Back</h5>
+    <h5>@ViewBag.Dois</h5>
 </p>
 
 <form id="frm" asp-controller="Menu" asp-action="Index" method="post">
@@ -14,25 +16,25 @@
                 Menu Pai
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nome)
+                Nome
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Formulario)
+                Formulario
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Funcao)
+                Função
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Link)
+                Link
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Back)
+                Back-End
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Front)
+                Front-End
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Layout)
+                Layout
             </th>
             <th>
                 Obs App
@@ -63,14 +65,14 @@
                     </div>
                 </div>  
             </th>
-            <th></th>                           
+            <th></th>                                       
             <th></th>
             <th></th>
             <th></th>
             <th>
                 <div class="form-group">
                     <div class="col-md-10">
-                        <select name="filtroBack2" id="filtroBack2" class="form-control" onchange="Atualiza()">
+                        <select name="filtroBack" id="filtroBack" class="form-control" onchange="Atualiza()">
                             <option value="0"></option>
                             <option value="Nao">Não</option>
                             <option value="Sim">Sim</option>
@@ -95,7 +97,7 @@
     </thead>
 
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in ViewBag.ListaMenu) {
     var MenuPai = "";
     @foreach (var pai in ViewBag.ListaMenuPai) {
         if (pai.Id == item.MenuPai_Id){
@@ -105,42 +107,42 @@
         // ==================================== LINHA CORPO DA TABELA ===========================================-->
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => MenuPai)
+                @MenuPai
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Nome)
+                @item.Nome
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Formulario)
+                @item.Formulario
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Funcao)
+                @item.Funcao
             </td>
             <td>
-                <a href="@Html.DisplayFor(modelItem => item.Link)">
-                    @Html.DisplayFor(modelItem => item.Link)
+                <a href="@item.Link">
+                    @item.Link
                 </a>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Back)
+                @item.Back
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Front)
+                @item.Front
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Layout)
+                @item.Layout
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ObsApp)
+                @item.ObsApp
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.OriginTable)
+                @item.OriginTable
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DestinTable)
+                @item.DestinTable
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ObsTable)
+                @item.ObsTable
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
