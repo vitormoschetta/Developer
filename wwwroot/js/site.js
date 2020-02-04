@@ -3,18 +3,34 @@
 
 // Write your JavaScript code.
 
-//http://www.macoratti.net/15/05/mvc_ajax.htm
+//Atualiza a tabela de itens 
 function Atualiza() {
     
     var MenuPai = $("#filtroMenuPai").val();
     var Back = $("#filtroBack").val();
+    var Front = $("#filtroFront").val();
+    var Layout = $("#filtroLayout").val();
+    var url = "/Menu/ListaItensMenu";
 
-    var url = "/Menu/ListaTodos";
-    $.post(url, {filtroMenuPai: MenuPai, filtroBack: Back}, function (data)
+    $.post(url, {filtroMenuPai: MenuPai, filtroBack: Back, filtroFront: Front, filtroLayout: Layout}, function (data)
     {
-        $("#frm").empty();
-        $("#frm").html(data);
+        $("#tabelaItensMenu").empty();
+        $("#tabelaItensMenu").html(data);
     });        
 
+}
+
+//Mostra detalhes do item da tabela selecionado
+function Detalhes() {
+
+    var id = $("#filtroMenuPai").val();
+    var url = "/Menu/Details";
+
+    $.post(url, {id: id}, function (data)
+    {
+        $("#detalhesMenu").empty();
+        $("#detalhesMenu").html(data);
+    });    
+    
 }
 

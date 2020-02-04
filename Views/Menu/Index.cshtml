@@ -1,37 +1,53 @@
-@using Microsoft.AspNetCore.Http
 
 <p>
     <a asp-action="Create">+ Novo</a>
-    <h5>@ViewBag.MenuPai</h5>
-    <h5>@ViewBag.Back</h5>
-    <h5>@ViewBag.Dois</h5>
 </p>
 
-<div class="form-group">
-    <div class="col-md-10">
+<form>
+  <div class="form-row">
+    <div class="col-2">
         <select name="filtroMenuPai" id="filtroMenuPai" class="form-control" onchange="Atualiza()">
-            <option value="0"></option>
+            <option value="0" selected="selected">Filtro Menu Pai</option>
             @foreach (var item in ViewBag.ListaMenuPai){
                 <option value="@item.Id">@item.Nome</option>
             }
         </select>
     </div>
-</div>
-
-<div class="form-group">
-    <div class="col-md-10">
+    <div class="col-2">
         <select name="filtroBack" id="filtroBack" class="form-control" onchange="Atualiza()">
-            <option value="0"></option>
+            <option value="0" selected="selected">Filtro Back-End</option>
             <option value="Nao">Não</option>
             <option value="Sim">Sim</option>
             <option value="Em Parte">Em Parte</option>
             <option value="Melhorar">Melhorar</option>
         </select>
-        
     </div>
-</div>  
+    <div class="col-2">
+        <select name="filtroFront" id="filtroFront" class="form-control" onchange="Atualiza()">
+            <option value="0" selected="selected">Filtro Front-End</option>
+            <option value="Nao">Não</option>
+            <option value="Sim">Sim</option>
+            <option value="Em Parte">Em Parte</option>
+            <option value="Melhorar">Melhorar</option>
+        </select>
+    </div>
+    <div class="col-2">
+        <select name="filtroLayout" id="filtroLayout" class="form-control" onchange="Atualiza()">
+            <option value="0" selected="selected">Filtro Layout</option>
+            <option value="Nao">Não</option>
+            <option value="Sim">Sim</option>
+            <option value="Em Parte">Em Parte</option>
+            <option value="Melhorar">Melhorar</option>
+        </select>
+    </div>
+  </div>
+</form>
 
+<!--
+<div id="detalhesMenu">
+    await Html.PartialAsync("_Details")
+</div>-->
 
-<div id="frm" asp-controller="Menu" asp-action="Index" method="post">
-    @Html.Partial("_partialTabela")
+<div id="tabelaItensMenu">
+    @await Html.PartialAsync("_TabelaIndex")
 </div>
