@@ -21,9 +21,9 @@ function Atualiza() {
 }
 
 //Mostra detalhes do item da tabela selecionado
-function Detalhes() {
+function Detalhes(parameter) {
 
-    var id = $("#filtroMenuPai").val();
+    var id = parameter;
     var url = "/Menu/Details";
 
     $.post(url, {id: id}, function (data)
@@ -32,5 +32,8 @@ function Detalhes() {
         $("#detalhesMenu").html(data);
     });    
     
+    $(document).ready(function() {
+        $('#detalhesMenu').modal('show');
+    })
 }
 

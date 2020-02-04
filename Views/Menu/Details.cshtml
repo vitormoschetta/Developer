@@ -1,0 +1,53 @@
+
+
+@{
+    var nomePai = "";
+}
+
+@foreach (var item in ViewBag.ListaMenuPai){
+    if(ViewBag.Menu.MenuPai_Id == item.Id){
+        nomePai = item.Nome; 
+    }
+}
+
+<div>
+    <h4>Item</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        
+        <dt>
+            Menu Pai
+        </dt>
+        <dd>
+            @nomePai
+        </dd>
+        <dt>
+            Nome
+        </dt>
+        <dd>
+            @ViewBag.Menu.Nome
+        </dd>
+        <dt>
+            Formulário
+        </dt>
+        <dd>
+            @ViewBag.Menu.Formulario
+        </dd>
+        <dt>
+            Função
+        </dt>
+        <dd>
+            @ViewBag.Menu.Funcao
+        </dd>
+        <dt>
+            Link
+        </dt>
+        <dd>
+            @ViewBag.Menu.Link
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@ViewBag.Menu.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

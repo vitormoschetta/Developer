@@ -183,3 +183,5 @@ C:\Users\96332824204\Desktop\Projetos\Developer\obj\Debug\netcoreapp3.1\Develope
 C:\Users\96332824204\Desktop\Projetos\Developer\obj\Debug\netcoreapp3.1\Developer.pdb
 C:\Users\96332824204\Desktop\Projetos\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Menu\_partialTabela.cshtml.g.cs
 C:\GitHub\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Menu\_TabelaIndex.cshtml.g.cs
+C:\GitHub\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Menu\_Details.cshtml.g.cs
+C:\GitHub\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Menu\Details.cshtml.g.cs
