@@ -1,6 +1,13 @@
-Nova tabela 'projeto'.
+Projeto Escalavel:
+    Nova tabela 'projeto'.
     A tabela Menu deve aponta para a tabela Projeto, indicando a que projeto pertence.
 
 
+Aplicar filtro dinâmico ao digitar nos menus: NOME, FUNÇÃO, OBS APP, TABELA ORIGEM, TABELA DESTINO, OBS TABELAS
 
 
+
+
+
+
+'
