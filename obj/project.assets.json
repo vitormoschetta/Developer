@@ -1637,24 +1637,30 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Sempron\\.nuget\\packages\\": {}
+    "C:\\Users\\96332824204\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\GitHub\\Developer\\Developer.csproj",
+      "projectUniqueName": "C:\\Users\\96332824204\\Desktop\\Projetos\\Developer\\Developer\\Developer.csproj",
       "projectName": "Developer",
-      "projectPath": "C:\\GitHub\\Developer\\Developer.csproj",
-      "packagesPath": "C:\\Users\\Sempron\\.nuget\\packages\\",
-      "outputPath": "C:\\GitHub\\Developer\\obj\\",
+      "projectPath": "C:\\Users\\96332824204\\Desktop\\Projetos\\Developer\\Developer\\Developer.csproj",
+      "packagesPath": "C:\\Users\\96332824204\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\96332824204\\Desktop\\Projetos\\Developer\\Developer\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Sempron\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\96332824204\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

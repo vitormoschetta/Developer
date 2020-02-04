@@ -29,7 +29,7 @@ namespace Developer.Controllers
             // Lista de menus Pai add a ViewBag.Lista para recuperar na View
             ViewBag.ListaMenuPai = await _context.Menu.Where(m => m.MenuPai_Id == 0).ToListAsync();
 
-            ViewBag.Detalhes = await _context.Menu.SingleOrDefaultAsync(m => m.Id == 5);
+            ViewBag.Menu = await _context.Menu.SingleOrDefaultAsync(m => m.Id == 5);
 
             return View(); 
         }
@@ -185,6 +185,7 @@ namespace Developer.Controllers
             ViewBag.Menu = await _context.Menu
                 .SingleOrDefaultAsync(m => m.Id == id);
                 
+                
             if (ViewBag.Menu == null)
             {
                 return NotFound();
@@ -193,8 +194,8 @@ namespace Developer.Controllers
             // Lista de menus Pai add a ViewBag.Lista para recuperar na View
             ViewBag.ListaMenuPai = await _context.Menu.Where(m => m.MenuPai_Id == 0).ToListAsync();
 
-            ///return PartialView("_Details");
-            return View();
+            return PartialView("_Details");
+            //return View();
         }
 
 

@@ -28,12 +28,9 @@ function Detalhes(parameter) {
 
     $.post(url, {id: id}, function (data)
     {
-        $("#detalhesMenu").empty();
         $("#detalhesMenu").html(data);
+        $('#modalDetails').modal('show');
     });    
     
-    $(document).ready(function() {
-        $('#detalhesMenu').modal('show');
-    })
 }
 

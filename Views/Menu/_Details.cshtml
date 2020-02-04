@@ -19,7 +19,7 @@
             
             @foreach (var pai in ViewBag.ListaMenuPai) {
                 
-                if (pai.Id == ViewBag.Detalhes.MenuPai_Id){
+                if (pai.Id == ViewBag.Menu.MenuPai_Id){
                     MenuPai = pai.Nome;
                 }
             }
@@ -35,7 +35,7 @@
                     Nome
                 </dt>
                 <dd>
-                    @ViewBag.Detalhes.Nome
+                    @ViewBag.Menu.Nome
                 </dd>
                
             </dl>
