@@ -233,7 +233,6 @@ C:\Users\96332824204\Desktop\Projetos\Developer\Developer\obj\Debug\netcoreapp3.
 C:\Users\96332824204\Desktop\Projetos\Developer\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\96332824204\Desktop\Projetos\Developer\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Menu\Create.cshtml.g.cs
 C:\Users\96332824204\Desktop\Projetos\Developer\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Menu\Delete.cshtml.g.cs
-C:\Users\96332824204\Desktop\Projetos\Developer\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Menu\Details.cshtml.g.cs
 C:\Users\96332824204\Desktop\Projetos\Developer\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Menu\Edit.cshtml.g.cs
 C:\Users\96332824204\Desktop\Projetos\Developer\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Menu\Index.cshtml.g.cs
 C:\Users\96332824204\Desktop\Projetos\Developer\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Menu\_Details.cshtml.g.cs
