@@ -13,29 +13,49 @@
       </div>
       <div class="modal-body">
 
-            @{
+           @{/*
                 var MenuPai = "";
-            }
-            
-            @foreach (var pai in ViewBag.ListaMenuPai) {
+
+                foreach (var pai in ViewBag.ListaMenuPai) {
                 
-                if (pai.Id == ViewBag.Menu.MenuPai_Id){
-                    MenuPai = pai.Nome;
-                }
-            }
-        
+                  if (pai.Id == ViewBag.Menu.MenuPai_Id){
+                      MenuPai = pai.Nome;
+                  }
+              }
+           */}
+            
+          
             <dl class="dl-horizontal">
                 <dt>
-                    Menu Pai
+                    Função
                 </dt>
                 <dd>
-                    @MenuPai
+                    @ViewBag.Menu.Funcao 
                 </dd>
                 <dt>
-                    Nome
+                    Formulario
                 </dt>
                 <dd>
-                    @ViewBag.Menu.Nome
+                    @ViewBag.Menu.Formulario 
+                </dd>
+                <dt>
+                    Link
+                </dt>
+                <dd>
+                    <a href="@ViewBag.Menu.Link">
+                    @ViewBag.Menu.Link</a>
+                </dd>
+                <dt>
+                    Obs App
+                </dt>
+                <dd>
+                    @ViewBag.Menu.ObsApp 
+                </dd>
+                <dt>
+                    Obs Tabelas
+                </dt>
+                <dd>
+                    @ViewBag.Menu.ObsTable
                 </dd>
                
             </dl>
@@ -43,7 +63,6 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Salvar mudanças</button>
       </div>
     </div>
   </div>

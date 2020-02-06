@@ -9,15 +9,6 @@
                 Nome
             </th>
             <th>
-                Formulario
-            </th>
-            <th>
-                Função
-            </th>
-            <th>
-                Link
-            </th>
-            <th>
                 Back-End
             </th>
             <th>
@@ -25,19 +16,13 @@
             </th>
             <th>
                 Layout
-            </th>
-            <th>
-                Obs App
-            </th>
+            </th>        
             <th>
                 Tabela Origem
             </th>
             <th>
                 Tabela Destino
-            </th>
-            <th>
-                Obs Tabelas
-            </th>
+            </th>        
             <th></th>
         </tr>
     </thead>
@@ -57,18 +42,7 @@
             </td>
             <td>
                 @item.Nome
-            </td>
-            <td>
-                @item.Formulario
-            </td>
-            <td>
-                @item.Funcao
-            </td>
-            <td>
-                <a href="@item.Link">
-                    @item.Link
-                </a>
-            </td>
+            </td>                    
             <td>
                 @item.Back
             </td>
@@ -79,16 +53,10 @@
                 @item.Layout
             </td>
             <td>
-                @item.ObsApp
-            </td>
-            <td>
                 @item.OriginTable
             </td>
             <td>
                 @item.DestinTable
-            </td>
-            <td>
-                @item.ObsTable
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
