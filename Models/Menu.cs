@@ -1,6 +1,4 @@
-using System;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Developer.Models
 {
@@ -18,7 +16,13 @@ namespace Developer.Models
         public string OriginTable { get; set; }
         public string  DestinTable { get; set; }
         public string ObsTable  {get; set;}
+
+        [ForeignKey("Projeto_Id")]
+        public int Projeto_Id { get; set; }
+
+        [ForeignKey("MenuPai_Id")]
         public int MenuPai_Id { get; set; }
+
 				
     }
 }

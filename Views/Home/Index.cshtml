@@ -1,10 +1,60 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-
+﻿
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <h4>Developer</h4>
     <p>Organize suas atividades de desenvolvimento.</p>
-    <p>Filtros práticos para saber o  que está feito e o que  resta  fazer.</p>
+    <p>Selecione um dos projetos abaixo ou crie um novo.</p>
 </div>
+
+<p>
+    <a asp-action="Create">+ Novo</a>
+</p>
+
+<table class="table">   
+    <thead>
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th>
+                Descricao
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+@if (ViewBag.ListaProjetos != null)
+{
+    @foreach (var item in ViewBag.ListaProjetos) {
+
+        <tr><a asp-controller="Menu" asp-action="Index" asp-route-id="@item.Id">Teste</a>
+            <td>
+                @item.Nome
+            </td>
+            <td>
+                @item.Descricao
+            </td>                               
+            <td>
+                <a asp-action="Edit" asp-route-id="">Editar</a> |
+                <a asp-action="Delete" asp-route-id="">Apagar</a> |
+                <a href="#" id="detalhesMenu" onclick="">Detalhes</a>
+            </td>
+        </tr>
+    }
+}
+else{
+
+    <tr>
+        <td> colspan="3">
+            Não há projetos registrados!
+        </td>
+          
+    </tr>
+    
+}
+    
+    
+  
+    </tbody>
+</table>

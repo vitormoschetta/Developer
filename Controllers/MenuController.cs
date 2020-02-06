@@ -21,16 +21,25 @@ namespace Developer.Controllers
         }
 
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id)
         {
-            // ListaMenu com retorno padrão
-            ViewBag.ListaMenu = await _context.Menu.Where(m => m.MenuPai_Id != 0).ToListAsync();
+            HttpContext.Session.SetInt32("Projeto", id);
+            
+            if (HttpContext.Session.GetInt32("Projeto") != null)
+            {
+                // ListaMenu com retorno padrão de acordo com o projeto em sessão
+                ViewBag.ListaMenu = await _context.Menu
+                    .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id != 0 and Projeto_Id =" + HttpContext.Session.GetInt32("Projeto")).ToListAsync();
 
-            // Lista de menus Pai add a ViewBag.Lista para recuperar na View
-            ViewBag.ListaMenuPai = await _context.Menu.Where(m => m.MenuPai_Id == 0).ToListAsync();
-
-            ViewBag.Menu = await _context.Menu.SingleOrDefaultAsync(m => m.Id == 5);
-
+                // Lista de menus Pai add a ViewBag.Lista para recuperar na View
+                ViewBag.ListaMenuPai = await _context.Menu
+                    .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id = 0 and Projeto_Id =" + HttpContext.Session.GetInt32("Projeto")).ToListAsync();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
             return View(); 
         }
 

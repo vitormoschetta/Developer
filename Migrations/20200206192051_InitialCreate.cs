@@ -24,11 +24,26 @@ namespace Developer.Migrations
                     OriginTable = table.Column<string>(nullable: true),
                     DestinTable = table.Column<string>(nullable: true),
                     ObsTable = table.Column<string>(nullable: true),
+                    Projeto_Id = table.Column<int>(nullable: false),
                     MenuPai_Id = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Menu", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Projeto",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nome = table.Column<string>(nullable: true),
+                    Descricao = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Projeto", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -50,6 +65,9 @@ namespace Developer.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Menu");
+
+            migrationBuilder.DropTable(
+                name: "Projeto");
 
             migrationBuilder.DropTable(
                 name: "Table");

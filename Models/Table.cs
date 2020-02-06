@@ -1,5 +1,3 @@
-using System;
-
 namespace Developer.Models
 {
     public class Table
