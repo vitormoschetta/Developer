@@ -23,59 +23,61 @@ namespace Developer.Controllers
 
         public async Task<IActionResult> Index(int id)
         {
-            if (id != 0){
-                HttpContext.Session.SetInt32("Projeto", id);
-            }            
-
-            ViewBag.projeto = HttpContext.Session.GetInt32("Projeto");
+            //Aqui estabelecemos a session do projeto selecionado na pagina inicial => Home/Index
+            //Só muda a session se for cliado em um dos projetos na pagina inicial
+            if (id != 0)
+                HttpContext.Session.SetInt32("Projeto", id);            
             
-            if (HttpContext.Session.GetInt32("Projeto") != null)
-            {
-                // ListaMenu com retorno padrão de acordo com o projeto em sessão
+            //ViewBag apenas para mostrar o projeto em uso na tela Menu/Index:
+            ViewBag.projeto = HttpContext.Session.GetInt32("Projeto");
+
+            var projeto = HttpContext.Session.GetInt32("Projeto");
+            
+            if (projeto != null){
+                // Lista de Itens Menu com retorno padrão de acordo com o projeto em sessão
                 ViewBag.ListaMenu = await _context.Menu
-                    .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id != 0 and Projeto_Id =" + HttpContext.Session.GetInt32("Projeto")).ToListAsync();
+                    .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id != 0 and Projeto_Id =" + projeto).ToListAsync();                    
 
                 // Lista de menus Pai add a ViewBag.Lista para recuperar na View
                 ViewBag.ListaMenuPai = await _context.Menu
-                    .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id = 0 and Projeto_Id =" + HttpContext.Session.GetInt32("Projeto")).ToListAsync();
+                    .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id = 0 and Projeto_Id =" + projeto).ToListAsync();
+
+                    //Obs: Apenas Menus Pai tem MenuPai_Id igual a zero
             }
-            else
-            {
+            else{
+                //Se tentar navegar para Menu/Index sem selecionar um projeto, é redirecionado para Home/Index
                 return RedirectToAction("Index", "Home");
             }
             
             return View(); 
         }
 
+
+        //Cada onchange nos selects de filtro aciona a função js 'Atualiza()' -> site.js, que redireciona para esta action:
         [HttpPost]
         public async Task<IActionResult> ListaItensMenu(int filtroMenuPai, string filtroBack, string filtroFront, string filtroLayout)
         {
-
-            // ListaMenu com retorno padrão
-            ViewBag.ListaMenu = await _context.Menu
-                .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id != 0 and Projeto_Id =" + HttpContext.Session.GetInt32("Projeto")).ToListAsync();
+            //recuperando a session para saber em que projeto estamos trabalhando
+            var projeto = HttpContext.Session.GetInt32("Projeto");
 
             // Lista de menus Pai add a ViewBag.Lista para recuperar na View
-                ViewBag.ListaMenuPai = await _context.Menu
-                    .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id = 0 and Projeto_Id =" + HttpContext.Session.GetInt32("Projeto")).ToListAsync();
+            ViewBag.ListaMenuPai = await _context.Menu
+                .FromSqlRaw("SELECT * FROM Menu where MenuPai_Id = 0 and Projeto_Id =" + projeto).ToListAsync();
 
-            // Filtrando consulta pelos selects enviados
-            string query = "SELECT * FROM Menu where MenuPai_Id != 0 and Projeto_Id = " + HttpContext.Session.GetInt32("Projeto");
-            if (filtroMenuPai != 0){
-                query = query + " and MenuPai_Id = " + filtroMenuPai;
-            }
-            if (filtroBack != "0"){
-                query = query + " and Back = '" + filtroBack + "'";
-            }
-            if (filtroFront != "0"){
-                query = query + " and Front = '" + filtroFront + "'";
-            }
-            if (filtroLayout != "0"){
-                query = query + " and Layout = '" + filtroLayout + "'";
-            }
+            // Filtrando consulta pelos selects recebidos como parametro:
+            string query = "SELECT * FROM Menu where MenuPai_Id != 0 and Projeto_Id = " + projeto;
+            if (filtroMenuPai != 0)
+                query = query + " and MenuPai_Id = " + filtroMenuPai;            
+            if (filtroBack != "0")
+                query = query + " and Back = '" + filtroBack + "'";            
+            if (filtroFront != "0")
+                query = query + " and Front = '" + filtroFront + "'";            
+            if (filtroLayout != "0")
+                query = query + " and Layout = '" + filtroLayout + "'";            
+
             ViewBag.ListaMenu = await _context.Menu.FromSqlRaw(query).ToListAsync();
 
-
+            //Vai preencher os dados em uma partial que é chamada no formulario Menu/Index pelo arquivo site.js => javascript
             return PartialView("_TabelaIndex");
         }
 
@@ -86,6 +88,7 @@ namespace Developer.Controllers
         {
             ViewBag.projeto = HttpContext.Session.GetInt32("Projeto");
 
+            //ViewBag para gerar os valores no select MenuPai. Menu pai e igual a zero, e tem q ser menu pai do Projeto selecionado na pagina inicial, que está em session:
             ViewBag.ListaMenuPai = await _context.Menu
                 .FromSqlRaw("select * from menu where MenuPai_Id = 0 and projeto_id = " + HttpContext.Session.GetInt32("Projeto"))
                 .ToListAsync();
@@ -99,16 +102,13 @@ namespace Developer.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nome,Formulario,Funcao,Link,Back,Front,Layout,ObsApp,OriginTable,DestinTable,ObsTable,MenuPai_Id,Projeto_Id")] Menu menu)
         {
-            if (ModelState.IsValid)
-            {
+            if (ModelState.IsValid){
                 _context.Add(menu);
                 await _context.SaveChangesAsync();
 
                 return RedirectToAction("Index");
             }
 
-            ViewBag.projeto = HttpContext.Session.GetInt32("Projeto");
-            
             return View(menu);
         }
 
@@ -118,15 +118,12 @@ namespace Developer.Controllers
             ViewBag.projeto = HttpContext.Session.GetInt32("Projeto");
 
             if (id == null)
-            {
-                return NotFound();
-            }
+                return NotFound();        
 
             var menu = await _context.Menu.SingleOrDefaultAsync(m => m.Id == id);
-            if (menu == null)
-            {
+            if (menu == null)            
                 return NotFound();
-            }
+
             return View(menu);
         }
 
@@ -135,33 +132,24 @@ namespace Developer.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Formulario,Funcao,Link,Back,Front,Layout,ObsApp,OriginTable,DestinTable,ObsTable,MenuPai_Id, Projeto_Id")] Menu menu)
         {
-            ViewBag.projeto = HttpContext.Session.GetInt32("Projeto");
-
             if (id != menu.Id)
-            {
                 return NotFound();
-            }
+            
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
+            if (ModelState.IsValid){
+                try{
                     _context.Update(menu);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!MenuExists(menu.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                catch (DbUpdateConcurrencyException){
+                    if (!MenuExists(menu.Id))                
+                        return NotFound();                    
+                    else                    
+                        throw;                    
                 }
                 return RedirectToAction("Index");
             }
+
             return View(menu);
         }
 
@@ -169,17 +157,13 @@ namespace Developer.Controllers
         // GET:
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null)            
+                return NotFound();            
 
             var menu = await _context.Menu
                 .SingleOrDefaultAsync(m => m.Id == id);
-            if (menu == null)
-            {
-                return NotFound();
-            }
+            if (menu == null)            
+                return NotFound();            
 
             return View(menu);
         }
@@ -206,19 +190,15 @@ namespace Developer.Controllers
         
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null)            
+                return NotFound();            
 
             ViewBag.Menu = await _context.Menu
                 .SingleOrDefaultAsync(m => m.Id == id);
                 
                 
-            if (ViewBag.Menu == null)
-            {
-                return NotFound();
-            }
+            if (ViewBag.Menu == null)            
+                return NotFound();            
 
             // Lista de menus Pai add a ViewBag.Lista para recuperar na View
             ViewBag.ListaMenuPai = await _context.Menu.Where(m => m.MenuPai_Id == 0).ToListAsync();

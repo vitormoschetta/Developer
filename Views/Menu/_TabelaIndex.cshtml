@@ -1,28 +1,14 @@
+<!--========== ESSA TABELA É CHAMADA NO FORMULARIO Menu/Index  -->
 <table class="table">   
-    <thead>
-        <!-- ====================== LINHA CABEÇALHO TA TABELA ======================-->
+    <thead>     
         <tr>
-            <th>
-                Menu Pai
-            </th>
-            <th>
-                Nome
-            </th>
-            <th>
-                Back-End
-            </th>
-            <th>
-                Front-End
-            </th>
-            <th>
-                Layout
-            </th>        
-            <th>
-                Tabela Origem
-            </th>
-            <th>
-                Tabela Destino
-            </th>        
+            <th>Menu Pai</th>           
+            <th>Nome</th>
+            <th>Back-End</th>
+            <th>Front-End</th>
+            <th>Layout</th>        
+            <th>Tabela Origem</th>
+            <th>Tabela Destino</th>        
             <th></th>
         </tr>
     </thead>
@@ -37,27 +23,13 @@
     }
         // ==================================== LINHA CORPO DA TABELA ===========================================-->
         <tr>
-            <td>
-                @MenuPai
-            </td>
-            <td>
-                @item.Nome
-            </td>                    
-            <td>
-                @item.Back
-            </td>
-            <td>
-                @item.Front
-            </td>
-            <td>
-                @item.Layout
-            </td>
-            <td>
-                @item.OriginTable
-            </td>
-            <td>
-                @item.DestinTable
-            </td>
+            <td>@MenuPai</td>
+            <td>@item.Nome</td>                    
+            <td>@item.Back</td>
+            <td>@item.Front</td>
+            <td>@item.Layout </td>
+            <td>@item.OriginTable</td>
+            <td>@item.DestinTable</td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Apagar</a> |

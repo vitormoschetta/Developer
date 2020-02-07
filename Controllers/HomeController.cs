@@ -39,8 +39,7 @@ namespace Developer.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nome,Descricao")] Projeto projeto)
         {
-            if (ModelState.IsValid)
-            {
+            if (ModelState.IsValid){
                 _context.Add(projeto);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
