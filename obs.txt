@@ -1,9 +1,10 @@
-Projeto Escalavel:
-    Nova tabela 'projeto'.
-    A tabela Menu deve aponta para a tabela Projeto, indicando a que projeto pertence.
 
+Autenticação/Login:
+    Dependendo do nível de permissão liberar: visualizar, editar, apagar, criar novo.
 
 Aplicar filtro dinâmico ao digitar nos menus: NOME, FUNÇÃO, OBS APP, TABELA ORIGEM, TABELA DESTINO, OBS TABELAS
+
+
 
 
 

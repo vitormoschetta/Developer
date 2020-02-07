@@ -23,7 +23,9 @@ namespace Developer.Controllers
 
         public async Task<IActionResult> Index(int id)
         {
-            HttpContext.Session.SetInt32("Projeto", id);
+            if (id != 0){
+                HttpContext.Session.SetInt32("Projeto", id);
+            }            
 
             ViewBag.projeto = HttpContext.Session.GetInt32("Projeto");
             
