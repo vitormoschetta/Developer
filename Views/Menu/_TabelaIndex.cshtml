@@ -32,7 +32,7 @@
             <td>@item.DestinTable</td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Apagar</a> |
+                <a href="#" id="deleteMenu" onclick="Delete(@item.Id)">Deletar</a> |
                 <a href="#" id="detalhesMenu" onclick="Detalhes(@item.Id)">Detalhes</a>
             </td>
         </tr>

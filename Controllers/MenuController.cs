@@ -154,18 +154,19 @@ namespace Developer.Controllers
         }
 
 
-        // GET:
-        public async Task<IActionResult> Delete(int? id)
+        [HttpPost]
+        public async Task<IActionResult> DeleteMenu(int? id)
         {
             if (id == null)            
                 return NotFound();            
 
-            var menu = await _context.Menu
+            ViewBag.Menu = await _context.Menu
                 .SingleOrDefaultAsync(m => m.Id == id);
-            if (menu == null)            
+            if (ViewBag.Menu == null)            
                 return NotFound();            
 
-            return View(menu);
+            return PartialView("_Delete");
+            //return View(menu);
         }
 
 

@@ -21,16 +21,25 @@ function Atualiza() {
 }
 
 //Mostra detalhes do item da tabela selecionado
-function Detalhes(parameter) {
-
-    var id = parameter;
+function Detalhes(params) {
     var url = "/Menu/Details";
 
-    $.post(url, {id: id}, function (data)
+    $.post(url, {id: params}, function (data)
     {
         $("#detalhesMenu").html(data);
         $('#modalDetails').modal('show');
     });    
     
+}
+
+//Mostra Item a ser deletado
+function Delete(params) {
+    var url = "/Menu/DeleteMenu";
+
+    $.post(url, {id: params}, function (data)
+    {
+        $("#deleteMenu").html(data);
+        $('#modalDelete').modal('show');
+    });    
 }
 

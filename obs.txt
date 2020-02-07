@@ -1,7 +1,6 @@
-Formulario Edit não esta salvando campo 'projeto_id' => implementar e tambem colocar 'select' nos campos 'back', 'front' e 'layout'
-
-Autenticação/Login:
-    Dependendo do nível de permissão liberar: visualizar, editar, apagar, criar novo.
+Criar, Editar e Apaga => fazer via Modal bootstrap
 
 Aplicar filtro dinâmico ao digitar nos menus: NOME, FUNÇÃO, OBS APP, TABELA ORIGEM, TABELA DESTINO, OBS TABELAS
+
+
 
