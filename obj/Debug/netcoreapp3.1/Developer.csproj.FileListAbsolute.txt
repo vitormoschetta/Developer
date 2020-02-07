@@ -184,7 +184,6 @@ C:\Users\96332824204\Desktop\Projetos\Developer\obj\Debug\netcoreapp3.1\Develope
 C:\Users\96332824204\Desktop\Projetos\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Menu\_partialTabela.cshtml.g.cs
 C:\GitHub\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Menu\_TabelaIndex.cshtml.g.cs
 C:\GitHub\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Menu\_Details.cshtml.g.cs
-C:\GitHub\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Menu\Details.cshtml.g.cs
 C:\Users\96332824204\Desktop\Projetos\Developer\Developer\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\96332824204\Desktop\Projetos\Developer\Developer\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\96332824204\Desktop\Projetos\Developer\Developer\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -249,3 +248,4 @@ C:\Users\96332824204\Desktop\Projetos\Developer\Developer\obj\Debug\netcoreapp3.
 C:\Users\96332824204\Desktop\Projetos\Developer\Developer\obj\Debug\netcoreapp3.1\Developer.dll
 C:\Users\96332824204\Desktop\Projetos\Developer\Developer\obj\Debug\netcoreapp3.1\Developer.pdb
 C:\Users\96332824204\Desktop\Projetos\Developer\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Home\Create.cshtml.g.cs
+C:\GitHub\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Home\Create.cshtml.g.cs

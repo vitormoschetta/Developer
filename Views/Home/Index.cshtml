@@ -28,12 +28,16 @@
 {
     @foreach (var item in ViewBag.ListaProjetos) {
 
-        <tr><a asp-controller="Menu" asp-action="Index" asp-route-id="@item.Id">Teste</a>
+        <tr>
             <td>
+                <a asp-controller="Menu" asp-action="Index" asp-route-id="@item.Id">
                 @item.Nome
+                </a>
             </td>
             <td>
+                <a asp-controller="Menu" asp-action="Index" asp-route-id="@item.Id">
                 @item.Descricao
+                </a>
             </td>                               
             <td>
                 <a asp-action="Edit" asp-route-id="">Editar</a> |
