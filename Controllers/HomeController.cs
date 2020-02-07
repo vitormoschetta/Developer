@@ -14,7 +14,6 @@ namespace Developer.Controllers
     public class HomeController : Controller
     {
         private readonly Contexto _context;
-        private readonly ILogger<HomeController> _logger;
 
         public HomeController(Contexto context)
         {

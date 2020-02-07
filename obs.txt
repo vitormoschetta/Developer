@@ -5,11 +5,3 @@ Autenticação/Login:
 
 Aplicar filtro dinâmico ao digitar nos menus: NOME, FUNÇÃO, OBS APP, TABELA ORIGEM, TABELA DESTINO, OBS TABELAS
 
-
-
-
-
-
-
-
-'

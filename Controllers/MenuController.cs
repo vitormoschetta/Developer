@@ -115,6 +115,8 @@ namespace Developer.Controllers
          // GET: 
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewBag.projeto = HttpContext.Session.GetInt32("Projeto");
+
             if (id == null)
             {
                 return NotFound();
@@ -131,8 +133,10 @@ namespace Developer.Controllers
         // POST: 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Formulario,Funcao,Link,Back,Front,Layout,ObsApp,OriginTable,DestinTable,ObsTable,MenuPai_Id")] Menu menu)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Formulario,Funcao,Link,Back,Front,Layout,ObsApp,OriginTable,DestinTable,ObsTable,MenuPai_Id, Projeto_Id")] Menu menu)
         {
+            ViewBag.projeto = HttpContext.Session.GetInt32("Projeto");
+
             if (id != menu.Id)
             {
                 return NotFound();
