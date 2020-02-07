@@ -31,9 +31,9 @@
             <td>@item.OriginTable</td>
             <td>@item.DestinTable</td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a href="#" id="editMenu" onclick="Edit(@item.Id)">Editar</a> |
                 <a href="#" id="deleteMenu" onclick="Delete(@item.Id)">Deletar</a> |
-                <a href="#" id="detalhesMenu" onclick="Detalhes(@item.Id)">Detalhes</a>
+                <a href="#" id="detalhesMenu" onclick="Details(@item.Id)">Detalhes</a>
             </td>
         </tr>
         }

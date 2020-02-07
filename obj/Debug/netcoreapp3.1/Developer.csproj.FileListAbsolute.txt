@@ -167,8 +167,6 @@ C:\Users\96332824204\Desktop\Projetos\Developer\obj\Debug\netcoreapp3.1\Develope
 C:\Users\96332824204\Desktop\Projetos\Developer\obj\Debug\netcoreapp3.1\Developer.RazorCoreGenerate.cache
 C:\Users\96332824204\Desktop\Projetos\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\96332824204\Desktop\Projetos\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Menu\Create.cshtml.g.cs
-C:\Users\96332824204\Desktop\Projetos\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Menu\Delete.cshtml.g.cs
-C:\Users\96332824204\Desktop\Projetos\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Menu\Edit.cshtml.g.cs
 C:\Users\96332824204\Desktop\Projetos\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Menu\Index.cshtml.g.cs
 C:\Users\96332824204\Desktop\Projetos\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\96332824204\Desktop\Projetos\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -252,3 +250,4 @@ C:\Users\96332824204\Desktop\Projetos\Developer\obj\Debug\netcoreapp3.1\Razor\Vi
 C:\Users\96332824204\Desktop\Projetos\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Menu\_Details.cshtml.g.cs
 C:\Users\96332824204\Desktop\Projetos\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Menu\_TabelaIndex.cshtml.g.cs
 C:\Users\96332824204\Desktop\Projetos\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Menu\_Delete.cshtml.g.cs
+C:\Users\96332824204\Desktop\Projetos\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Menu\_Edit.cshtml.g.cs

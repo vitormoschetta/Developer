@@ -43,10 +43,9 @@
             <label asp-for="Back" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <select asp-for="Back" class="form-control">
-                    <option value="Nao">Não</option>
-                    <option value="Sim">Sim</option>
-                    <option value="Em Parte">Em Parte</option>
-                    <option value="Melhorar">Melhorar</option>
+                    @foreach (var item in ViewBag.ListaSituacao){
+                        <option value="@item">@item</option>
+                    }                   
                 </select>
                 <span asp-validation-for="Back" class="text-danger"></span>
             </div>
@@ -55,10 +54,9 @@
             <label asp-for="Front" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <select asp-for="Front" class="form-control">
-                    <option value="Nao">Não</option>
-                    <option value="Sim">Sim</option>
-                    <option value="Em Parte">Em Parte</option>
-                    <option value="Melhorar">Melhorar</option>
+                    @foreach (var item in ViewBag.ListaSituacao){
+                        <option value="@item">@item</option>
+                    }                   
                 </select>
                 <span asp-validation-for="Front" class="text-danger"></span>
             </div>
@@ -67,10 +65,9 @@
             <label asp-for="Layout" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <select asp-for="Layout" class="form-control">
-                    <option value="Nao">Não</option>
-                    <option value="Sim">Sim</option>
-                    <option value="Em Parte">Em Parte</option>
-                    <option value="Melhorar">Melhorar</option>
+                    @foreach (var item in ViewBag.ListaSituacao){
+                        <option value="@item">@item</option>
+                    }                   
                 </select>
                 <span asp-validation-for="Layout" class="text-danger"></span>
             </div>

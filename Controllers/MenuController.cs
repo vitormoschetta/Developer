@@ -92,6 +92,13 @@ namespace Developer.Controllers
             ViewBag.ListaMenuPai = await _context.Menu
                 .FromSqlRaw("select * from menu where MenuPai_Id = 0 and projeto_id = " + HttpContext.Session.GetInt32("Projeto"))
                 .ToListAsync();
+
+            List<string> lista = new List<string>();
+            lista.Add("Nao");
+            lista.Add("Sim");
+            lista.Add("Em Parte");
+            lista.Add("Melhorar");
+            ViewBag.ListaSituacao = lista;
                 
             return View();
         }
@@ -112,19 +119,31 @@ namespace Developer.Controllers
             return View(menu);
         }
 
-         // GET: 
-        public async Task<IActionResult> Edit(int? id)
+
+        [HttpPost]
+        public async Task<IActionResult> EditMenu(int? id)
         {
             ViewBag.projeto = HttpContext.Session.GetInt32("Projeto");
 
             if (id == null)
                 return NotFound();        
 
-            var menu = await _context.Menu.SingleOrDefaultAsync(m => m.Id == id);
-            if (menu == null)            
+            ViewBag.Menu = await _context.Menu.SingleOrDefaultAsync(m => m.Id == id);
+            if (ViewBag.Menu == null)            
                 return NotFound();
 
-            return View(menu);
+            ViewBag.ListaMenuPai = await _context.Menu
+                .FromSqlRaw("select * from menu where MenuPai_Id = 0 and projeto_id = " + HttpContext.Session.GetInt32("Projeto"))
+                .ToListAsync();
+
+            List<string> lista = new List<string>();
+            lista.Add("Nao");
+            lista.Add("Sim");
+            lista.Add("Em Parte");
+            lista.Add("Melhorar");
+            ViewBag.ListaSituacao = lista;
+
+            return PartialView("_Edit");
         }
 
         // POST: 

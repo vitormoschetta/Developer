@@ -21,7 +21,7 @@ function Atualiza() {
 }
 
 //Mostra detalhes do item da tabela selecionado
-function Detalhes(params) {
+function Details(params) {
     var url = "/Menu/Details";
 
     $.post(url, {id: params}, function (data)
@@ -43,3 +43,13 @@ function Delete(params) {
     });    
 }
 
+
+function Edit(params) {
+    var url = "/Menu/EditMenu";
+
+    $.post(url, {id: params}, function (data)
+    {
+        $("#editMenu").html(data);
+        $('#modalEdit').modal('show');
+    });  
+}
