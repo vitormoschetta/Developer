@@ -1,16 +1,25 @@
 
-<p>
-    <a asp-action="Create">+ Novo</a>
-</p>
-<p>
-    Projeto: @ViewBag.projeto
-</p>
+<div>
+    <a href="#" onclick="New()">+ Novo</a>
+</div>
+
+<div style="text-align:right; font-weight: bold; text-decoration: underline">
+    @ViewBag.projeto.Nome
+</div>
 
 
+<div class="form-row">
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" name="checkMenusPai" id="checkMenusPai" onclick="Select()">
+        <label class="custom-control-label" for="checkMenusPai">Mostrar Menus Pai</label>
+    </div>
+</div>
 
-  <div class="form-row">
+<br/>
+
+<div class="form-row">
     <div class="col-2">
-        <select name="filtroMenuPai" id="filtroMenuPai" class="form-control" onchange="Atualiza()">
+        <select name="filtroMenuPai" id="filtroMenuPai" class="form-control" onchange="Select()">
             <option value="0" selected="selected">Filtro Menu Pai</option>
             @foreach (var item in ViewBag.ListaMenuPai){
                 <option value="@item.Id">@item.Nome</option>
@@ -18,7 +27,7 @@
         </select>
     </div>
     <div class="col-2">
-        <select name="filtroBack" id="filtroBack" class="form-control" onchange="Atualiza()">
+        <select name="filtroBack" id="filtroBack" class="form-control" onchange="Select()">
             <option value="0" selected="selected">Filtro Back-End</option>
             <option value="Nao">Não</option>
             <option value="Sim">Sim</option>
@@ -27,7 +36,7 @@
         </select>
     </div>
     <div class="col-2">
-        <select name="filtroFront" id="filtroFront" class="form-control" onchange="Atualiza()">
+        <select name="filtroFront" id="filtroFront" class="form-control" onchange="Select()">
             <option value="0" selected="selected">Filtro Front-End</option>
             <option value="Nao">Não</option>
             <option value="Sim">Sim</option>
@@ -36,7 +45,7 @@
         </select>
     </div>
     <div class="col-2">
-        <select name="filtroLayout" id="filtroLayout" class="form-control" onchange="Atualiza()">
+        <select name="filtroLayout" id="filtroLayout" class="form-control" onchange="Select()">
             <option value="0" selected="selected">Filtro Layout</option>
             <option value="Nao">Não</option>
             <option value="Sim">Sim</option>
@@ -44,8 +53,17 @@
             <option value="Melhorar">Melhorar</option>
         </select>
     </div>
-  </div>
+    <div class="col-2">
+        <input type="text" class="form-control" onkeyup="BuscaDinamica(this.value)"/>
+    </div>
 
+</div>
+
+
+
+<!-- ======== ID DE MODALS CHAMADAS NO ARQUIVO 'Site.js' =============================-->
+<div id="createMenu">
+</div>
 
 <div id="editMenu">
 </div>

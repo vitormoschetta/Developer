@@ -4,15 +4,19 @@
 // Write your JavaScript code.
 
 //Atualiza a tabela de itens 
-function Atualiza() {
+function Select() {
     
     var MenuPai = $("#filtroMenuPai").val();
     var Back = $("#filtroBack").val();
     var Front = $("#filtroFront").val();
     var Layout = $("#filtroLayout").val();
     var url = "/Menu/ListaItensMenu";
+    var ChekMenuPai = 0;
 
-    $.post(url, {filtroMenuPai: MenuPai, filtroBack: Back, filtroFront: Front, filtroLayout: Layout}, function (data)
+    if ($("#checkMenusPai").is(':checked'))
+        ChekMenuPai = 1;
+
+    $.post(url, {filtroMenuPai: MenuPai, filtroBack: Back, filtroFront: Front, filtroLayout: Layout, filtroCheckMenuPai: ChekMenuPai}, function (data)
     {
         $("#tabelaItensMenu").empty();
         $("#tabelaItensMenu").html(data);
@@ -43,7 +47,7 @@ function Delete(params) {
     });    
 }
 
-
+//Editar Itens
 function Edit(params) {
     var url = "/Menu/EditMenu";
 
@@ -51,5 +55,32 @@ function Edit(params) {
     {
         $("#editMenu").html(data);
         $('#modalEdit').modal('show');
+    });  
+}
+
+//Novo Item
+function New() {
+    var url = "/Menu/CreateMenu";
+
+    $.post(url, function (data)
+    {
+        $("#createMenu").html(data);
+        $('#modalCreate').modal('show');
+    });  
+}
+
+
+function BuscaDinamica(params) {
+    var url = "/Menu/BuscaDinamica";
+
+    var ChekMenuPai = 0;
+
+    if ($("#checkMenusPai").is(':checked'))
+        ChekMenuPai = 1;
+
+    $.post(url, {texto: params, filtroCheckMenuPai: ChekMenuPai}, function (data)
+    {
+        $("#tabelaItensMenu").empty();
+        $("#tabelaItensMenu").html(data);
     });  
 }

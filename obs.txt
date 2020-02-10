@@ -1,6 +1,6 @@
-Criar, Editar e Apaga => fazer via Modal bootstrap
+Formulario de login com criptografia
 
-Aplicar filtro dinâmico ao digitar nos menus: NOME, FUNÇÃO, OBS APP, TABELA ORIGEM, TABELA DESTINO, OBS TABELAS
+Implementar classe 'situação' para usuario escolher os textos para filtros
 
 
 
