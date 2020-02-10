@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace Developer.Controllers
 {
+    
     public class MenuController: Controller
     {
         private readonly Contexto _context;
@@ -19,8 +20,7 @@ namespace Developer.Controllers
         {
             _context = context;
         }
-
-
+        
         public async Task<IActionResult> Index(int id)
         {
             //Aqui estabelecemos a session do projeto selecionado na pagina inicial => Home/Index
@@ -92,7 +92,7 @@ namespace Developer.Controllers
             ViewBag.ListaMenuPai = await _context.Menu
                 .FromSqlRaw("select * from menu where MenuPai_Id = 0 and projeto_id = " + HttpContext.Session.GetInt32("Projeto"))
                 .ToListAsync();
-
+            
             List<string> lista = new List<string>();
             lista.Add("Nao");
             lista.Add("Sim");
