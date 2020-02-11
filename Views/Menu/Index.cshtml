@@ -18,7 +18,7 @@
 <br/>
 
 <div class="form-row">
-    <div class="col-2">
+    <div class="col-1">
         <select name="filtroMenuPai" id="filtroMenuPai" class="form-control" onchange="Select()">
             <option value="0" selected="selected">Filtro Menu Pai</option>
             @foreach (var item in ViewBag.ListaMenuPai){
@@ -26,7 +26,8 @@
             }
         </select>
     </div>
-    <div class="col-2">
+    <div class="col-2"></div>    
+    <div class="col-1">
         <select name="filtroBack" id="filtroBack" class="form-control" onchange="Select()">
             <option value="0" selected="selected">Filtro Back-End</option>
             <option value="Nao">Não</option>
@@ -35,7 +36,7 @@
             <option value="Melhorar">Melhorar</option>
         </select>
     </div>
-    <div class="col-2">
+    <div class="col-1">
         <select name="filtroFront" id="filtroFront" class="form-control" onchange="Select()">
             <option value="0" selected="selected">Filtro Front-End</option>
             <option value="Nao">Não</option>
@@ -44,7 +45,7 @@
             <option value="Melhorar">Melhorar</option>
         </select>
     </div>
-    <div class="col-2">
+    <div class="col-1">
         <select name="filtroLayout" id="filtroLayout" class="form-control" onchange="Select()">
             <option value="0" selected="selected">Filtro Layout</option>
             <option value="Nao">Não</option>
@@ -53,8 +54,9 @@
             <option value="Melhorar">Melhorar</option>
         </select>
     </div>
+    <div class="col-4"></div>
     <div class="col-2">
-        <input type="text" class="form-control" onkeyup="BuscaDinamica(this.value)"/>
+        <input type="text" class="form-control" placeholder="Consulta Dinâmica" onkeyup="BuscaDinamica(this.value)"/>
     </div>
 
 </div>

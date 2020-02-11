@@ -1,6 +1,10 @@
-Formulario de login com criptografia
+1. Formulario de login com criptografia
 
-Implementar classe 'situação' para usuario escolher os textos para filtros
+2. Implementar classe 'situação' para usuario escolher os textos para filtros
+
+3. Adicionar os campos: 'linguagem', 'padrao' e 'framework' na classe 'Projeto'.
 
 
 
+
+    
