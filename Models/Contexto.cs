@@ -8,8 +8,8 @@ namespace Developer.Models
         {        }
 
         public DbSet<Menu> Menu { get; set; }
-        public DbSet<Table> Table { get; set; }
         public DbSet<Projeto> Projeto { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
 
     }
 }

@@ -1,0 +1,31 @@
+<form asp-action="Login">
+    <div class="form-horizontal"> 
+        
+        <div class="form-group">           
+            <div class="col-md-5">
+                <h4 style="text-align:center">Login</h4>  
+            </div>
+        </div>
+        <div class="form-group">           
+            <div class="col-md-5">
+                <input type="Text" id="Login" name="Login" placeholder="CPF ou Email"  class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-5">
+                <input type="password" id="Senha" name="Senha" placeholder="Senha" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-5">
+                <input type="submit" value="Login" class="btn btn-default" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-5" style="color:red">
+                @ViewBag.Mensagem
+            </div>
+        </div>
+        
+    </div>
+</form>

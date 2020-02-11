@@ -22,9 +22,15 @@ namespace Developer.Controllers
 
         public async Task<IActionResult> Index()
         {
-            // ListaMenu de projetos no banco
-            ViewBag.ListaProjetos = await _context.Projeto.ToListAsync();            
+            var usuario = HttpContext.Session.GetString("Usuario");
+            if (usuario == null)
+                return RedirectToAction("Login", "Usuario");
+            
+            ViewBag.Usuario = usuario;
 
+            // ListaMenu de projetos no banco
+            ViewBag.ListaProjetos = await _context.Projeto.ToListAsync();
+                        
             return View();
         }
 

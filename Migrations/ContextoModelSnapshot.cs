@@ -83,21 +83,34 @@ namespace Developer.Migrations
                     b.ToTable("Projeto");
                 });
 
-            modelBuilder.Entity("Developer.Models.Table", b =>
+            modelBuilder.Entity("Developer.Models.Usuario", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("Menu_Id")
-                        .HasColumnType("int");
+                    b.Property<string>("Ativo")
+                        .IsRequired()
+                        .HasColumnType("varchar(1) CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Cpf")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Nome")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<int>("Perfil_Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Senha")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Table");
+                    b.ToTable("Usuario");
                 });
 #pragma warning restore 612, 618
         }

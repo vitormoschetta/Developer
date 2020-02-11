@@ -47,17 +47,21 @@ namespace Developer.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Table",
+                name: "Usuario",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(nullable: true),
-                    Menu_Id = table.Column<int>(nullable: false)
+                    Email = table.Column<string>(nullable: true),
+                    Cpf = table.Column<string>(nullable: true),
+                    Senha = table.Column<string>(nullable: true),
+                    Ativo = table.Column<string>(nullable: false),
+                    Perfil_Id = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Table", x => x.Id);
+                    table.PrimaryKey("PK_Usuario", x => x.Id);
                 });
         }
 
@@ -70,7 +74,7 @@ namespace Developer.Migrations
                 name: "Projeto");
 
             migrationBuilder.DropTable(
-                name: "Table");
+                name: "Usuario");
         }
     }
 }
