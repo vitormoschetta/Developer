@@ -9,6 +9,7 @@ using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http; 
 
+
 namespace Developer.Controllers
 {
     public class UsuarioController: Controller
@@ -19,9 +20,19 @@ namespace Developer.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
-        {         
-            return View();
+        public async Task<IActionResult> Index()
+        {   
+            var usuario = HttpContext.Session.GetString("Usuario"); 
+            var usuarioPerfil = HttpContext.Session.GetInt32("UsuarioPerfil");
+            if (usuario == null)
+                return RedirectToAction("Login", "Usuario");
+            
+            if (usuarioPerfil != 2)
+                return RedirectToAction("Index", "Home");
+            
+
+            var listaUsuarios = await _context.Usuario.ToListAsync();                        
+            return View(listaUsuarios);
         }
 
          public IActionResult Create()
@@ -34,8 +45,7 @@ namespace Developer.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nome,Email,Cpf,Senha,Ativo,Perfil_Id")] Usuario usuario)
         {
-            if (ModelState.IsValid)
-            {
+            if (ModelState.IsValid){               
                 _context.Add(usuario);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -102,10 +112,11 @@ namespace Developer.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(string Login, string Senha)
         {
-            var usuario = await _context.Usuario.SingleOrDefaultAsync(u => (u.Cpf == Login || u.Email == Login) && u.Senha == Senha); 
+            var usuario = await _context.Usuario.SingleOrDefaultAsync(u => ((u.Cpf == Login || u.Email == Login)|| u.Nome == Login) && u.Senha == Senha); 
                                             //.SingleOrDefault pois pode retornar nulo 
             if (usuario != null){
-                HttpContext.Session.SetString("Usuario", usuario.Cpf);     
+                HttpContext.Session.SetString("Usuario", usuario.Cpf);
+                HttpContext.Session.SetInt32("UsuarioPerfil", usuario.Perfil_Id);
                 return RedirectToAction("Index", "Home");
             }
 
@@ -116,6 +127,7 @@ namespace Developer.Controllers
         public IActionResult Logout()
         {         
             HttpContext.Session.Remove("Usuario");
+            HttpContext.Session.Remove("UsuarioPerfil");
             return View("Login","Usuario");
         }
 

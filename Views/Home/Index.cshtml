@@ -14,10 +14,10 @@
     <thead>
         <tr>
             <th>
-                Nome
+                Sigla
             </th>
             <th>
-                Descricao
+                Nome
             </th>
             <th></th>
         </tr>
@@ -31,18 +31,18 @@
         <tr>
             <td>
                 <a asp-controller="Menu" asp-action="Index" asp-route-id="@item.Id">
-                @item.Nome
+                @item.Sigla
                 </a>
             </td>
             <td>
                 <a asp-controller="Menu" asp-action="Index" asp-route-id="@item.Id">
-                @item.Descricao
+                @item.Nome
                 </a>
             </td>                               
             <td>
-                <a asp-action="Edit" asp-route-id="">Editar</a> |
-                <a asp-action="Delete" asp-route-id="">Apagar</a> |
-                <a href="#" id="detalhesMenu" onclick="">Detalhes</a>
+                <a href="#" id="detalhesMenu" onclick="" class="btn btn-info">Detalhes</a>
+                <a asp-action="Edit" asp-route-id="">Edit</a> |
+                <a asp-action="Delete" asp-route-id="" style="color:red">Delete</a> |                
             </td>
         </tr>
     }
@@ -62,3 +62,19 @@ else{
   
     </tbody>
 </table>
+
+
+
+
+<!-- ======== ID DE MODALS CHAMADAS NO ARQUIVO 'Site.js' =============================-->
+<div id="createProjeto">
+</div>
+
+<div id="editProjeto">
+</div>
+
+<div id="deleteProjeto">    
+</div>
+
+<div id="detalhesProjeto">
+</div>

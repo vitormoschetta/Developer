@@ -38,8 +38,11 @@ namespace Developer.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Sigla = table.Column<string>(nullable: true),
                     Nome = table.Column<string>(nullable: true),
-                    Descricao = table.Column<string>(nullable: true)
+                    Descricao = table.Column<string>(nullable: true),
+                    Linguagem = table.Column<string>(nullable: true),
+                    Framework = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

@@ -1,8 +1,10 @@
 1. Formulario de login com criptografia
 
-2. Implementar classe 'situação' para usuario escolher os textos para filtros
+2. Inserir User Admin caso tabela Usuario estiver vazia (primeira execução);
 
-3. Adicionar os campos: 'linguagem', 'padrao' e 'framework' na classe 'Projeto'.
+3. Implementar classe 'situação' para usuario escolher os textos para filtros
+
+4. Adicionar os campos: 'linguagem', 'padrao' e 'framework' na partial Create
 
 
 

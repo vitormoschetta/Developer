@@ -25,8 +25,6 @@ namespace Developer.Controllers
             var usuario = HttpContext.Session.GetString("Usuario");
             if (usuario == null)
                 return RedirectToAction("Login", "Usuario");
-            
-            ViewBag.Usuario = usuario;
 
             // ListaMenu de projetos no banco
             ViewBag.ListaProjetos = await _context.Projeto.ToListAsync();
@@ -43,7 +41,7 @@ namespace Developer.Controllers
          // POST: 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Descricao")] Projeto projeto)
+        public async Task<IActionResult> Create([Bind("Id,Sigla,Nome")] Projeto projeto)
         {
             if (ModelState.IsValid){
                 _context.Add(projeto);

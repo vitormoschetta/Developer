@@ -35,9 +35,11 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+                        @if (Context.Session.GetInt32("UsuarioPerfil") == 2){
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Menu" asp-action="Index">Menu</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Index">Usuario</a>
                         </li>
+                        }
                     </ul>
                    
                 </div>
