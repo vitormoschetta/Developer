@@ -35,7 +35,7 @@ namespace Developer.Controllers
 
     
     //Classe para criar o valor aleatório 'Salt' para concatenar e 'salgar' a Senha do Usuario:
-    public class Salt  
+    public class SaltRandon
     {  
         public static byte[] Create()  
         {  
@@ -89,7 +89,7 @@ namespace Developer.Controllers
         public async Task<IActionResult> Create([Bind("Id,Nome,Email,Cpf,Senha,Ativo,Perfil_Id")] Usuario usuario)
         {
             if (ModelState.IsValid){   
-                var salt = Salt.Create();//retorna em byte[]
+                var salt = SaltRandon.Create();//retorna em byte[]
                 var hash = Hash.Create(usuario.Senha, salt);  // retorna em string
 
                 if (Hash.Validate(usuario.Senha, salt, hash) == true){
@@ -120,48 +120,39 @@ namespace Developer.Controllers
             {
                 return NotFound();
             }
-            return View(usuario);
+            ViewBag.Usuario = usuario;
+            return View();
         }
 
         // POST: Usuarios/Edit/5     
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Email,Cpf,Senha,Ativo,Perfil_Id")] Usuario usuario)
-        {
-            if (id != usuario.Id)
-            {
-                return NotFound();
+        public async Task<IActionResult> Edit(int id, string Nome, string Email, string Cpf, string Senha, string Salt, char Ativo, int Perfil_Id)
+        {                                   
+            Usuario user  = await _context.Usuario.SingleOrDefaultAsync(m => m.Id == id);
+            user.Nome = Nome; user.Email = Email; user.Cpf = Cpf; user.Salt = Salt; user.Ativo = Ativo; user.Perfil_Id = Perfil_Id;
+            //Se a senha permanece igual/inalterada, executa esse bloco que NÃO gera novo 'hash', caso contrário ele iria criar um hash do hash já existente:
+            if (user.Senha == Senha){
+                user.Senha = Senha;
+                _context.Update(user);
+                await _context.SaveChangesAsync();                       
             }
+            // Se a senha foi alterada, gera novo 'hash' e novo 'salt'
+            else{
+                var salt = SaltRandon.Create();
+                var hash = Hash.Create(Senha, salt);  
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    var salt = Salt.Create();//retorna em byte[]
-                    var hash = Hash.Create(usuario.Senha, salt);  // retorna em string
+                if (Hash.Validate(Senha, salt, hash) == true){         
+                    user.Senha = hash;
+                    user.Salt = Convert.ToBase64String(salt);
 
-                    if (Hash.Validate(usuario.Senha, salt, hash) == true){
-                        usuario.Senha = hash;
-                        usuario.Salt = Convert.ToBase64String(salt);//converte salt de byte[]  para string para salvar no banco
-
-                        _context.Update(usuario);
-                        await _context.SaveChangesAsync();
-                    }
+                    _context.Update(user);
+                    await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!UsuarioExists(usuario.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction("Index");
-            }
-            return View(usuario);
+            }                           
+            
+            return RedirectToAction("Index", "Usuario");
+            //return View();
         }
 
         public IActionResult Login()
