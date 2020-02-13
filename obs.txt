@@ -1,4 +1,4 @@
-1. Formulario de login com criptografia
+1. Implementar mudança usuario inativo para nao permitir login
 
 2. Inserir User Admin caso tabela Usuario estiver vazia (primeira execução);
 
