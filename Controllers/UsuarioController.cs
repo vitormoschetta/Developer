@@ -173,12 +173,17 @@ namespace Developer.Controllers
                 var hash = Hash.Create(Senha, salt); // Gera o Hash para comparar com o hash da tabela do usuario
 
                 // Agora sim verifica se o hash da senha é igual
-                var usuario = await _context.Usuario.SingleOrDefaultAsync(u => ((u.Cpf == Login || u.Email == Login)|| u.Nome == Login) && u.Senha == hash); 
+                var usuario = await _context.Usuario.SingleOrDefaultAsync(u => ((u.Cpf == Login || u.Email == Login)|| u.Nome == Login) && u.Senha == hash);                 
 
                 if (usuario != null){
-                    HttpContext.Session.SetString("Usuario", usuario.Cpf);
-                    HttpContext.Session.SetInt32("UsuarioPerfil", usuario.Perfil_Id);
-                    return RedirectToAction("Index", "Home");
+                    if(usuario.Ativo == 'N'){
+                        ViewBag.Mensagem = "Usuario Inativo, contate o Administrador.";
+                    }
+                    else{
+                        HttpContext.Session.SetString("Usuario", usuario.Cpf);
+                        HttpContext.Session.SetInt32("UsuarioPerfil", usuario.Perfil_Id);
+                        return RedirectToAction("Index", "Home");
+                    }                    
                 }
                 else{
                     ViewBag.Mensagem = "Senha incorreta";
