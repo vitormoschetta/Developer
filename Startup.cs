@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Developer.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Developer
 {
@@ -43,6 +45,22 @@ namespace Developer
                 options.Cookie.IsEssential = true;
             });
 
+            
+            /*/Habilitar configuração de Acesso as paginas:
+            services.AddControllers(config =>
+            {
+                // using Microsoft.AspNetCore.Mvc.Authorization;
+                // using Microsoft.AspNetCore.Authorization;
+                var policy = new AuthorizationPolicyBuilder()
+                                .RequireAuthenticatedUser()
+                                .Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+             });*/
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Usuario", policy => policy.RequireClaim("Usuario"));
+            });
             
         }
 

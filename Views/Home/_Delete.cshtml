@@ -1,0 +1,60 @@
+
+
+<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja apagar?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form asp-action="DeleteProjeto">
+            <dl class="dl-horizontal">
+                <input type="hidden" value="@ViewBag.Projeto.Id" id="Id" name="Id" />
+                <dt>
+                    Sigla
+                </dt>
+                <dd>
+                    @ViewBag.Projeto.Sigla
+                </dd>
+                <dt>
+                    Nome
+                </dt>
+                <dd>
+                    @ViewBag.Projeto.Nome
+                </dd>
+                <dt>
+                    Descricao
+                </dt>
+                <dd>
+                    @ViewBag.Projeto.Descricao
+                </dd>
+                <dt>
+                    Linguagem
+                </dt>
+                <dd>
+                    @ViewBag.Projeto.Linguagem
+                </dd>
+                <dt>
+                    Framework
+                </dt>
+                <dd>
+                    @ViewBag.Projeto.Framework
+                </dd>
+            </dl>
+            
+            
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" />
+                </div>
+            </form>
+
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>

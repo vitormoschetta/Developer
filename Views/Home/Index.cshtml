@@ -6,9 +6,9 @@
     <p>Selecione um dos projetos abaixo ou crie um novo.</p>
 </div>
 
-<p>
-    <a asp-action="Create">+ Novo</a>
-</p>
+<div>
+    <a href="#" onclick="New()">+ Novo</a>
+</div>
 
 <table class="table">   
     <thead>
@@ -40,22 +40,20 @@
                 </a>
             </td>                               
             <td>
-                <a href="#" id="detalhesMenu" onclick="" class="btn btn-info">Detalhes</a>
-                <a asp-action="Edit" asp-route-id="">Edit</a> |
-                <a asp-action="Delete" asp-route-id="" style="color:red">Delete</a> |                
+                <a href="#" onclick="Details(@item.Id)" class="btn btn-info">Detalhes</a>
+                <a href="#" onclick="Edit(@item.Id)">Edit</a> |
+                <a href="#" onclick="Delete(@item.Id)" style="color:red">Delete</a> |                
             </td>
         </tr>
     }
 }
 else{
-
     <tr>
         <td> colspan="3">
             Não há projetos registrados!
         </td>
           
     </tr>
-    
 }
     
     
@@ -66,8 +64,8 @@ else{
 
 
 
-<!-- ======== ID DE MODALS CHAMADAS NO ARQUIVO 'Site.js' =============================-->
-<div id="createProjeto">
+<!-- ======== ID DE MODALS CHAMADAS NO ARQUIVO 'projeto.js' =============================-->
+<div id="CreateProjeto">
 </div>
 
 <div id="editProjeto">
@@ -78,3 +76,7 @@ else{
 
 <div id="detalhesProjeto">
 </div>
+
+
+
+<script src="~/js/projeto.js" asp-append-version="true"></script>

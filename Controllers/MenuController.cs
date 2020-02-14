@@ -8,10 +8,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http; 
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace Developer.Controllers
 {
-    
+   
     public class MenuController: Controller
     {
         private readonly Contexto _context;

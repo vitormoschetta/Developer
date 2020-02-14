@@ -10,6 +10,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http; 
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 
 namespace Developer.Controllers
@@ -180,6 +182,7 @@ namespace Developer.Controllers
                         ViewBag.Mensagem = "Usuario Inativo, contate o Administrador.";
                     }
                     else{
+                        
                         HttpContext.Session.SetString("Usuario", usuario.Cpf);
                         HttpContext.Session.SetInt32("UsuarioPerfil", usuario.Perfil_Id);
                         return RedirectToAction("Index", "Home");
