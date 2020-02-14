@@ -2,7 +2,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edição</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Editar</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -15,31 +15,31 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" value="@ViewBag.Menu.Id" id="Id" name="Id" />
 
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-md-2 control-label">Nome</label>
                     <div class="col-md-10">
                         <input type="Text" id="Nome" name="Nome" value="@ViewBag.Menu.Nome" class="form-control" />
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-md-2 control-label">Formulário</label>
                     <div class="col-md-10">
                         <input type="Text" id="Formulario" name="Formulario" value="@ViewBag.Menu.Formulario" class="form-control" />
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-md-2 control-label">Função</label>
                     <div class="col-md-10">
                         <input type="Text" id="Funcao" name="Funcao" value="@ViewBag.Menu.Funcao" class="form-control" />
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-md-2 control-label">Link</label>
                     <div class="col-md-10">
                         <input type="Text" id="Link" name="Link" value="@ViewBag.Menu.Link" class="form-control" />
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-md-2 control-label">Back-End</label>
                     <div class="col-md-10">
                         <select id="Back" name="Back" class="form-control">
@@ -52,9 +52,10 @@
                                 }
                                 
                             }                                         
-                        </select>                      
+                        </select>     
+                    </div>                 
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-md-2 control-label">Front-End</label>
                     <div class="col-md-10">
                         <select id="Front" name="Front" class="form-control">
@@ -70,7 +71,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-md-2 control-label">Layout</label>
                     <div class="col-md-10">
                         <select id="Layout" name="Layout" class="form-control">
@@ -86,31 +87,31 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-md-2 control-label">ObsApp</label>
                     <div class="col-md-10">
                         <input type="Text" id="ObsApp" name="ObsApp" value="@ViewBag.Menu.ObsApp" class="form-control" />
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-md-2 control-label">Tabela Origem</label>
                     <div class="col-md-10">
                         <input type="Text" id="OriginTable" name="OriginTable" value="@ViewBag.Menu.OriginTable" class="form-control" />
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-md-2 control-label">Tabela Destino</label>
                     <div class="col-md-10">
                         <input type="Text" id="DestinTable" name="DestinTable" value="@ViewBag.Menu.DestinTable" class="form-control" />
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-md-2 control-label">ObsTable</label>
                     <div class="col-md-10">
                         <input type="Text" id="ObsTable" name="ObsTable" value="@ViewBag.Menu.ObsTable" class="form-control" />
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-md-2 control-label">MenuPai</label>
                     <div class="col-md-10">
                         <select id="MenuPai_Id" name="MenuPai_Id" class="form-control">
@@ -132,7 +133,7 @@
                 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Concluir" class="btn btn-default" />
+                        <input type="submit" value="Concluir" class="btn btn-info" />
                     </div>
                 </div>
 

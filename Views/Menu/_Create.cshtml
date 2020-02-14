@@ -12,40 +12,41 @@
         <form asp-action="Create">
             <div class="form-horizontal">      
 
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-md-2 control-label">Nome</label>
                     <div class="col-md-10">
                         <input type="Text" id="Nome" name="Nome"  class="form-control" />
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-md-2 control-label">Formulário</label>
                     <div class="col-md-10">
                         <input type="Text" id="Formulario" name="Formulario" class="form-control" />
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-md-2 control-label">Função</label>
                     <div class="col-md-10">
                         <input type="Text" id="Funcao" name="Funcao"  class="form-control" />
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-md-2 control-label">Link</label>
                     <div class="col-md-10">
                         <input type="Text" id="Link" name="Link" class="form-control" />
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-md-2 control-label">Back-End</label>
                     <div class="col-md-10">
                         <select id="Back" name="Back" class="form-control">
                             @foreach (var item in ViewBag.ListaSituacao){                                              
                                 <option value="@item">@item</option>
                             }                                         
-                        </select>                      
+                        </select>  
+                    </div>                    
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-md-2 control-label">Front-End</label>
                     <div class="col-md-10">
                         <select id="Front" name="Front" class="form-control">
@@ -55,7 +56,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-md-2 control-label">Layout</label>
                     <div class="col-md-10">
                         <select id="Layout" name="Layout"  class="form-control">
@@ -65,31 +66,31 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-md-2 control-label">ObsApp</label>
                     <div class="col-md-10">
                         <input type="Text" id="ObsApp" name="ObsApp" class="form-control" />
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-md-2 control-label">Tabela Origem</label>
                     <div class="col-md-10">
                         <input type="Text" id="OriginTable" name="OriginTable"  class="form-control" />
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-md-2 control-label">Tabela Destino</label>
                     <div class="col-md-10">
                         <input type="Text" id="DestinTable" name="DestinTable" class="form-control" />
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-md-2 control-label">ObsTable</label>
                     <div class="col-md-10">
                         <input type="Text" id="ObsTable" name="ObsTable" class="form-control" />
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-md-2 control-label">MenuPai</label>
                     <div class="col-md-10">
                         <select id="MenuPai_Id" name="MenuPai_Id"  class="form-control">
@@ -105,7 +106,7 @@
                 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Concluir" class="btn btn-default" />
+                        <input type="submit" value="Concluir" class="btn btn-info" />
                     </div>
                 </div>
 

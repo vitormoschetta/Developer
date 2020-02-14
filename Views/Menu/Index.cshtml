@@ -1,18 +1,12 @@
 
-<div>
-    <a href="#" onclick="New()">+ Novo</a>
-</div>
+
 
 <div style="text-align:right; font-weight: bold; text-decoration: underline">
     @ViewBag.projeto.Sigla
 </div>
 
-
-<div class="form-row">
-    <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" name="checkMenusPai" id="checkMenusPai" onclick="Select()">
-        <label class="custom-control-label" for="checkMenusPai">Mostrar Menus Pai</label>
-    </div>
+<div>
+    <a href="#" onclick="New()">+ Novo</a>
 </div>
 
 <br/>
@@ -54,7 +48,16 @@
             <option value="Melhorar">Melhorar</option>
         </select>
     </div>
-    <div class="col-4"></div>
+    <div class="col-1">
+    </div>
+    <div class="col-3">
+        <div class="form-row">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="checkMenusPai" id="checkMenusPai" onclick="Select()">
+                <label class="custom-control-label" for="checkMenusPai">Mostrar Menus Pai</label>
+            </div>
+        </div>
+    </div>
     <div class="col-2">
         <input type="text" class="form-control" placeholder="Consulta Dinâmica" onkeyup="BuscaDinamica(this.value)"/>
     </div>
