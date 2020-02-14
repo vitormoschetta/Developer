@@ -82,6 +82,10 @@ namespace Developer.Controllers
 
          public IActionResult Create()
         {
+            var usuario = HttpContext.Session.GetString("Usuario"); 
+            if (usuario == null)
+                return RedirectToAction("Login", "Usuario");
+
             return View();
         }
 
@@ -112,6 +116,10 @@ namespace Developer.Controllers
         // GET: Usuario/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            var user = HttpContext.Session.GetString("Usuario"); 
+            if (user == null)
+                return RedirectToAction("Login", "Usuario");
+
             if (id == null)
             {
                 return NotFound();
