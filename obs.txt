@@ -4,6 +4,8 @@
 
 3. Implementar classe 'situação' para usuario escolher os textos para filtros
 
+4. Implementar mudança do hash de senha a cada login: mudar o salt que é aleatorio;
+
 
 
 
