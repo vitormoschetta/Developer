@@ -10,7 +10,8 @@ function Select() {
     var Back = $("#filtroBack").val();
     var Front = $("#filtroFront").val();
     var Layout = $("#filtroLayout").val();
-    var url = "/Menu/ListaItensMenu";
+    //var url = "/Menu/ListaItensMenu";
+    var url = $("#btn-lista").data("url");    
     var ChekMenuPai = 0;
 
     if ($("#checkMenusPai").is(':checked'))
@@ -26,7 +27,8 @@ function Select() {
 
 //Mostra detalhes do item da tabela selecionado
 function Details(params) {
-    var url = "/Menu/Details";
+    //var url = "/Menu/Details";
+    var url = $("#btn-details").data("url");   
 
     $.post(url, {id: params}, function (data)
     {
@@ -38,7 +40,8 @@ function Details(params) {
 
 //Mostra Item a ser deletado
 function Delete(params) {
-    var url = "/Menu/DeleteMenu";
+    //var url = "/Menu/DeleteMenu";
+    var url = $("#btn-delete").data("url");   
 
     $.post(url, {id: params}, function (data)
     {
@@ -49,7 +52,8 @@ function Delete(params) {
 
 //Editar Itens
 function Edit(params) {
-    var url = "/Menu/EditMenu";
+    //var url = "/Menu/EditMenu";
+    var url = $("#btn-edit").data("url");   
 
     $.post(url, {id: params}, function (data)
     {
@@ -60,7 +64,8 @@ function Edit(params) {
 
 //Novo Item
 function New() {
-    var url = "/Menu/CreateMenu";
+    //var url = "/Menu/CreateMenu";
+    var url = $("#btn-novo").data("url");   
 
     $.post(url, function (data)
     {
@@ -71,7 +76,8 @@ function New() {
 
 
 function BuscaDinamica(params) {
-    var url = "/Menu/BuscaDinamica";
+    //var url = "/Menu/BuscaDinamica";
+    var url = $("#btn-busca-dinamica").data("url");   
 
     var ChekMenuPai = 0;
 

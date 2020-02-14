@@ -1,6 +1,7 @@
 ﻿//Novo Item
 function New() {
-    var url = "/Home/Create";
+    //var url = "/Home/Create";
+    var url = $("#btn-novo").data("url");    
 
     $.post(url, function (data)
     {
@@ -12,7 +13,8 @@ function New() {
 
 //Mostra detalhes do item da tabela selecionado
 function Details(params) {
-    var url = "/Home/Details";
+    //var url = "../Home/Details";
+    var url = $("#btn-details").data("url");
 
     $.post(url, {id: params}, function (data)
     {
@@ -25,7 +27,8 @@ function Details(params) {
 
 //Editar Itens
 function Edit(params) {
-    var url = "/Home/Edit";
+    //var url = "../Home/Edit";
+    var url = $("#btn-edit").data("url");
 
     $.post(url, {id: params}, function (data)
     {
@@ -37,7 +40,8 @@ function Edit(params) {
 
 //Mostra Item a ser deletado
 function Delete(params) {
-    var url = "/Home/Delete";
+    //var url = "../Home/Delete";
+    var url = $("#btn-delete").data("url");
 
     $.post(url, {id: params}, function (data)
     {

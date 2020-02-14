@@ -5,7 +5,7 @@
     @ViewBag.projeto.Sigla
 </div>
 
-<div>
+<div id="btn-novo" data-url="@Url.Action("CreateMenu","Menu")">
     <a href="#" onclick="New()">+ Novo</a>
 </div>
 
@@ -58,7 +58,7 @@
             </div>
         </div>
     </div>
-    <div class="col-2">
+    <div class="col-2" id="btn-busca-dinamica" data-url="@Url.Action("BuscaDinamica","Menu")">
         <input type="text" class="form-control" placeholder="Consulta Dinâmica" onkeyup="BuscaDinamica(this.value)"/>
     </div>
 
@@ -81,6 +81,10 @@
 
 <div id="tabelaItensMenu">
     @await Html.PartialAsync("_TabelaIndex")
+</div>
+
+
+<div id="btn-lista" data-url="@Url.Action("ListaItensMenu","Menu")">
 </div>
 
 

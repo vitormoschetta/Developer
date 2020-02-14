@@ -258,3 +258,17 @@ C:\Users\96332824204\Desktop\Projetos\Developer\obj\Debug\netcoreapp3.1\Razor\Vi
 C:\Users\96332824204\Desktop\Projetos\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Home\_Details.cshtml.g.cs
 C:\Users\96332824204\Desktop\Projetos\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Home\_Edit.cshtml.g.cs
 C:\Users\96332824204\Desktop\Projetos\Developer\obj\Debug\netcoreapp3.1\Razor\Views\Home\_Create.cshtml.g.cs
+C:\Users\96332824204\Desktop\Projetos\Developer\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\96332824204\Desktop\Projetos\Developer\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\96332824204\Desktop\Projetos\Developer\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+C:\Users\96332824204\Desktop\Projetos\Developer\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\Users\96332824204\Desktop\Projetos\Developer\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+C:\Users\96332824204\Desktop\Projetos\Developer\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Users\96332824204\Desktop\Projetos\Developer\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+C:\Users\96332824204\Desktop\Projetos\Developer\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+C:\Users\96332824204\Desktop\Projetos\Developer\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\96332824204\Desktop\Projetos\Developer\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\96332824204\Desktop\Projetos\Developer\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\96332824204\Desktop\Projetos\Developer\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\Users\96332824204\Desktop\Projetos\Developer\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\Users\96332824204\Desktop\Projetos\Developer\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll

@@ -6,7 +6,7 @@
     <p>Selecione um dos projetos abaixo ou crie um novo.</p>
 </div>
 
-<div>
+<div id="btn-novo" data-url="@Url.Action("Create","Home")">
     <a href="#" onclick="New()">+ Novo</a>
 </div>
 
@@ -40,9 +40,9 @@
                 </a>
             </td>                               
             <td>
-                <a href="#" onclick="Details(@item.Id)" style="color:green">Detalhes</a> |
-                <a href="#" onclick="Edit(@item.Id)">Edit</a> |
-                <a href="#" onclick="Delete(@item.Id)" style="color:red">Delete</a> |                
+                <a href="#" id="btn-details" data-url="@Url.Action("Details","Home")" onclick="Details(@item.Id)" style="color:green">Detalhes</a> |
+                <a href="#" id="btn-edit" data-url="@Url.Action("Edit","Home")" onclick="Edit(@item.Id)">Edit</a> |
+                <a href="#" id="btn-delete" data-url="@Url.Action("Delete","Home")" onclick="Delete(@item.Id)" style="color:red">Delete</a> |                
             </td>
         </tr>
     }

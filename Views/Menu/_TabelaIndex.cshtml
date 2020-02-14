@@ -31,9 +31,9 @@
             <td>@item.OriginTable</td>
             <td>@item.DestinTable</td>
             <td>
-                <a href="#" onclick="Details(@item.Id)" style="color:green">Detalhes</a> |
-                <a href="#" onclick="Edit(@item.Id)">Edit</a> |
-                <a href="#" onclick="Delete(@item.Id)" style="color:red">Delete</a>                 
+                <a href="#" id="btn-details" data-url="@Url.Action("Details","Menu")" onclick="Details(@item.Id)" style="color:green">Detalhes</a> |
+                <a href="#" id="btn-edit" data-url="@Url.Action("EditMenu","Menu")" onclick="Edit(@item.Id)">Edit</a> |
+                <a href="#" id="btn-delete" data-url="@Url.Action("DeleteMenu","Menu")" onclick="Delete(@item.Id)" style="color:red">Delete</a>                 
             </td>
         </tr>
         }
