@@ -192,7 +192,12 @@ namespace Developer.Controllers
                     else{
                         
                         HttpContext.Session.SetString("Usuario", usuario.Cpf);
-                        HttpContext.Session.SetInt32("UsuarioPerfil", usuario.Perfil_Id);
+                        HttpContext.Session.SetInt32("UsuarioPerfil", usuario.Perfil_Id); 
+
+                        if(Login == "Admin" && Senha == "123")
+                            return RedirectToAction("Edit", "Usuario", new {id=usuario.Id});
+                        
+
                         return RedirectToAction("Index", "Home");
                     }                    
                 }

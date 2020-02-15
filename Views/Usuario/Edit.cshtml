@@ -35,8 +35,14 @@
             <label>Ativo</label>
             <div class="col-md-10">
                 <select id="Ativo" name="Ativo" class="form-control">
-                    <option value="S">Sim</option>
-                    <option value="N">Não</option>
+                    @if(ViewBag.Usuario.Ativo == 'S'){
+                        <option value="S" selected>Sim</option>
+                        <option value="N">Não</option>
+                     }
+                     else{
+                        <option value="S" selected>Sim</option>
+                        <option value="N" selected>Não</option>
+                     }                  
                 </select>
             </div>
         </div>
@@ -44,8 +50,14 @@
             <label>Perfil</label>
             <div class="col-md-10">
                  <select id="Perfil_Id" name="Perfil_Id" class="form-control">
-                    <option value="1">Usuario</option>
-                    <option value="2">Admin</option>
+                     @if(ViewBag.Usuario.Perfil_Id == 1){
+                        <option value="1" selected>Usuario</option>
+                        <option value="2">Admin</option>
+                     }
+                     else{
+                        <option value="1">Usuario</option>
+                        <option value="2" selected>Admin</option>
+                     }                    
                 </select>
             </div>
         </div>

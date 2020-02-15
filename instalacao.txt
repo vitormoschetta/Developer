@@ -1,0 +1,61 @@
+
+Siga os procedimentos a seguir para instalar esta aplicação:
+
+01. Configuração para o Banco de Dados (Sql Server ou MySql):
+    a) No arquivo 'appsettings.json' existe duas string de conexao (MySql e Sql Server).
+        Altera a que irá usar de acordo com suas configurações.
+
+        Obs: O Banco de Dados será gerado de acordo com as configurações feitas nesse arquivo,
+            inclusive nome do banco, usuario e senha.
+
+    b) No arquivo 'Startup.cs' estão contidas no método ConfigureServices, a configuração dos dois
+        bancos(MySql e Sql Server). Escolher um e apagar ou comentar o outro.
+
+02. Criar o Banco de Dados: 
+    Execuar no servidor na pasta dessa aplicação os seguintes comandos,um de cada vez:
+
+    dotnet ef migrations add migracao_inicial
+    dotnet ef database update
+
+
+03. Criar Usuario no Banco de dados:
+    O primeiro usuario(admin) precisa ser criado via banco.
+
+    INSERT INTO usuario(nome, email, cpf, senha, salt, ativo, perfil_id)
+	VALUES('Admin', 'email@email.com', '00000000000', 'Z6H8SPE1G4wcDtBjYFIlMpE3ZZmu6LeM3ep5wCcjgoQ=', '9u8aFeTfqaMx03fBcVTrrQ==', 'S', 2)
+
+    Obs: Esse hash de senha equivale a senha: '123'
+
+
+04. Habilitar o IIS executar Core:
+    Baixe e Instale o Hosting do Core:
+
+    https://dotnet.microsoft.com/download/dotnet-core/thank-you/runtime-aspnetcore-3.1.1-windows-hosting-bundle-installer
+
+
+05. Configurar IIS:
+
+    a) Crie um novo pool de aplicativos, com as seguintes configurações:
+        - versão do .NET: 'Sem Código Gerenciado'
+        - Modo de Pipiline gerenciado: 'Integrado'
+
+    b) Crie um novo aplicativo usando o pool criado acima.
+
+
+06. Publicar a aplicação no IIS:
+    Execute o seguinte comando na pasta da aplicação:
+
+    dotnet publish --output <caminho da pasta no IIS>
+
+    Exemplo:
+
+    dotnet publish --output C:\inetpub\wwwroot\Developer
+
+
+07. Acesse a aplicação e entre com as credenciais:
+    Usuario: Admin
+    Senha: 123
+
+    Não esqueça de alterar a senha.
+
+                            
