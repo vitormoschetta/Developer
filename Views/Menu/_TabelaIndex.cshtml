@@ -14,28 +14,35 @@
     </thead>
 
     <tbody>
-@foreach (var item in ViewBag.ListaMenu) {
-    var MenuPai = "";
-    @foreach (var pai in ViewBag.ListaMenuPai) {
-        if (pai.Id == item.MenuPai_Id){
-            MenuPai = pai.Nome;
+@{
+    var contador = 0;
+    foreach (var item in ViewBag.ListaMenu) {
+        contador++;
+        var MenuPai = "";
+        @foreach (var pai in ViewBag.ListaMenuPai) {
+            if (pai.Id == item.MenuPai_Id){
+                MenuPai = pai.Nome;
+            }
+        }
+            // ==================================== LINHA CORPO DA TABELA ===========================================-->
+            <tr>
+                <td>@MenuPai</td>
+                <td>@item.Nome</td>                    
+                <td>@item.Back</td>
+                <td>@item.Front</td>
+                <td>@item.Layout </td>
+                <td>@item.OriginTable</td>
+                <td>@item.DestinTable</td>
+                <td>
+                    <a href="#" id="btn-details" data-url="@Url.Action("Details","Menu")" onclick="Details(@item.Id)" style="color:green">Detalhes</a> |
+                    <a href="#" id="btn-edit" data-url="@Url.Action("EditMenu","Menu")" onclick="Edit(@item.Id)">Edit</a> |
+                    <a href="#" id="btn-delete" data-url="@Url.Action("DeleteMenu","Menu")" onclick="Delete(@item.Id)" style="color:red">Delete</a>                 
+                </td>
+            </tr>
         }
     }
-        // ==================================== LINHA CORPO DA TABELA ===========================================-->
-        <tr>
-            <td>@MenuPai</td>
-            <td>@item.Nome</td>                    
-            <td>@item.Back</td>
-            <td>@item.Front</td>
-            <td>@item.Layout </td>
-            <td>@item.OriginTable</td>
-            <td>@item.DestinTable</td>
-            <td>
-                <a href="#" id="btn-details" data-url="@Url.Action("Details","Menu")" onclick="Details(@item.Id)" style="color:green">Detalhes</a> |
-                <a href="#" id="btn-edit" data-url="@Url.Action("EditMenu","Menu")" onclick="Edit(@item.Id)">Edit</a> |
-                <a href="#" id="btn-delete" data-url="@Url.Action("DeleteMenu","Menu")" onclick="Delete(@item.Id)" style="color:red">Delete</a>                 
-            </td>
-        </tr>
-        }
     </tbody>
 </table>
+<p>
+    Total Itens: @contador
+</p>
