@@ -30,12 +30,13 @@ namespace Developer
             services.AddControllersWithViews();
 
             //Configuracao de conexao banco de dados => verificar o arq 'appsettings.json'
-            //Sql Server:
+            /*Sql Server:
             services.AddDbContext<Contexto>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("SqlServerConnectionString")));
-            /*MySql:
+                options.UseSqlServer(Configuration.GetConnectionString("SqlServerConnectionString")));*/
+            
+            //MySql:
             services.AddDbContext<Contexto>(options =>
-                options.UseMySql(Configuration["ConexaoMySql:MySqlConnectionString"]));*/
+                options.UseMySql(Configuration["ConexaoMySql:MySqlConnectionString"]));
 
 
             //Habilitar trabalho com sessiom
