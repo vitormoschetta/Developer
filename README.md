@@ -1,2 +1,2 @@
 # Developer
-Sitema para organizar controle de tarefas de desenvolvimento de app web
+Sitema para documentar o desenvolvimento de aplicações.
