@@ -1,2 +1,2 @@
 # Developer
-Sitema para documentar o desenvolvimento de aplicações.
+Aplicação para documentar o desenvolvimento de software.
