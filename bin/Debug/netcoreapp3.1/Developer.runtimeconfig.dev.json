@@ -1,8 +1,0 @@
-{
-  "runtimeOptions": {
-    "additionalProbingPaths": [
-      "C:\\Users\\Sempron\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Sempron\\.nuget\\packages"
-    ]
-  }
-}
